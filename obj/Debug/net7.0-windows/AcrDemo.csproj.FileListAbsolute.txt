@@ -1,0 +1,16 @@
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\bin\Debug\net7.0-windows\AcrDemo.deps.json
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\bin\Debug\net7.0-windows\AcrDemo.dll
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\bin\Debug\net7.0-windows\AcrDemo.pdb
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\Output\AcrDemo\net7.0-windows\AcrDemo.deps.json
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\Output\AcrDemo\net7.0-windows\AcrDemo.dll
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\Output\AcrDemo\net7.0-windows\AcrDemo.pdb
+C:\Users\zfxsq\RiderProjects\AcrDemo\Output\AcrDemo\net7.0-windows\AcrDemo.deps.json
+C:\Users\zfxsq\RiderProjects\AcrDemo\Output\AcrDemo\net7.0-windows\AcrDemo.dll
+C:\Users\zfxsq\RiderProjects\AcrDemo\Output\AcrDemo\net7.0-windows\AcrDemo.pdb
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\net7.0-windows\AcrDemo.csproj.AssemblyReference.cache
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\net7.0-windows\AcrDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\net7.0-windows\AcrDemo.AssemblyInfoInputs.cache
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\net7.0-windows\AcrDemo.AssemblyInfo.cs
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\net7.0-windows\AcrDemo.csproj.CoreCompileInputs.cache
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\net7.0-windows\AcrDemo.dll
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\net7.0-windows\AcrDemo.pdb

@@ -1,0 +1,17 @@
+C:\Users\zfxsq\RiderProjects\AcrDemo\Output\AcrDemo\AcrDemo.deps.json
+C:\Users\zfxsq\RiderProjects\AcrDemo\Output\AcrDemo\AcrDemo.dll
+C:\Users\zfxsq\RiderProjects\AcrDemo\Output\AcrDemo\AcrDemo.pdb
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\AcrDemo.csproj.AssemblyReference.cache
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\AcrDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\AcrDemo.AssemblyInfoInputs.cache
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\AcrDemo.AssemblyInfo.cs
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\AcrDemo.csproj.CoreCompileInputs.cache
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\AcrDemo.dll
+C:\Users\zfxsq\RiderProjects\AcrDemo\AcrDemo\obj\Debug\AcrDemo.pdb
+H:\桌面\重构开抄版\AcrDemo\obj\Debug\AcrDemo.csproj.AssemblyReference.cache
+H:\桌面\重构开抄版\AcrDemo\obj\Debug\AcrDemo.GeneratedMSBuildEditorConfig.editorconfig
+H:\桌面\重构开抄版\AcrDemo\obj\Debug\AcrDemo.AssemblyInfoInputs.cache
+H:\桌面\重构开抄版\AcrDemo\obj\Debug\AcrDemo.AssemblyInfo.cs
+H:\桌面\重构开抄版\AcrDemo\obj\Debug\AcrDemo.csproj.CoreCompileInputs.cache
+H:\桌面\重构开抄版\AcrDemo\obj\Debug\AcrDemo.dll
+H:\桌面\重构开抄版\AcrDemo\obj\Debug\AcrDemo.pdb

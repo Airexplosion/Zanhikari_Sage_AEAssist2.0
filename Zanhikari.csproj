@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    </PropertyGroup>
+	
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>..\Output\Zahikari\</OutputPath>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>..\Output\Zanhikari\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="CombatRoutine">
+        <HintPath>D:\ae2.0\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="Common">
+        <HintPath>D:\ae2.0\AEAssistCNVersion\AEAssist\Common.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="ImGui.NET">
+        <HintPath>..\References\ImGui.NET.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+    </ItemGroup>
+
+</Project>
