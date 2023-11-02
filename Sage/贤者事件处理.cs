@@ -5,20 +5,20 @@ using Common;
 using Common.Define;
 using Common.Helper;
 
-namespace ²Ğ¹â.ÏÍÕß;
+namespace æ®‹å…‰.è´¤è€…;
 
-public class ÏÍÕßÊÂ¼ş´¦Àí : IRotationEventHandler
+public class è´¤è€…äº‹ä»¶å¤„ç† : IRotationEventHandler
 {
 
     // public void OnEnterRotation()
     // {
-    //     LogHelper.Print("¸ÃACR½öÄÜÓÃÓÚÈÕËæ£¬Èç¹ûÄãÓÃËü´ò¸ßÄÑÄÌËÀÈËÁË£¬ÕÒÎÒ·´À¡±ğ¹ÖÎÒÂîÄã¡£");
-    //     LogHelper.Print("11.1¸üĞÂ - »ù±¾ÄÜÅÜ£¬ÈÕËæÓĞÂß¼­ÓÅ»¯µÄ²¿·Ö¼ÇµÃÕÒ×÷Õß·´À¡£¬Ğ»Ğ»¡£");
-    //     LogHelper.Print("Ë³´øÒ»Ìá£¬ÂÖÅÌ¶ÄÕæµÄ»áÕ¨ÓÎÏ·£¬±ğÂÒÍæ¡£");
+    //     LogHelper.Print("è¯¥ACRä»…èƒ½ç”¨äºæ—¥éšï¼Œå¦‚æœä½ ç”¨å®ƒæ‰“é«˜éš¾å¥¶æ­»äººäº†ï¼Œæ‰¾æˆ‘åé¦ˆåˆ«æ€ªæˆ‘éª‚ä½ ã€‚");
+    //     LogHelper.Print("11.1æ›´æ–° - åŸºæœ¬èƒ½è·‘ï¼Œæ—¥éšæœ‰é€»è¾‘ä¼˜åŒ–çš„éƒ¨åˆ†è®°å¾—æ‰¾ä½œè€…åé¦ˆï¼Œè°¢è°¢ã€‚");
+    //     LogHelper.Print("é¡ºå¸¦ä¸€æï¼Œè½®ç›˜èµŒçœŸçš„ä¼šç‚¸æ¸¸æˆï¼Œåˆ«ä¹±ç©ã€‚");
     // }
     public void OnResetBattle()
     {
-        ÏÍÕßÕ½¶·Êı¾İ.Instance.Reset();
+        è´¤è€…æˆ˜æ–—æ•°æ®.Instance.Reset();
         Qt.Reset();
     }
     
@@ -28,22 +28,22 @@ public class ÏÍÕßÊÂ¼ş´¦Àí : IRotationEventHandler
     }
 
     public async Task OnNoTarget()
-    {   //Èç¹ûÄÌÈËQT¹ØÁË£¬¾Í·µ»Ø
-        if (!Qt.GetQt("ÄÌÈË"))
+    {   //å¦‚æœå¥¶äººQTå…³äº†ï¼Œå°±è¿”å›
+        if (!Qt.GetQt("å¥¶äºº"))
         {
             return;
         }
-        //»ñÈ¡¿ÉÒÔÊ©·Å¼¼ÄÜµÄÌ¹¿Ë¶ÓÓÑÖĞµÚÒ»¸öÃ»ÓĞÄãµÄµ¥¶ÜµÄ¶ÔÏó id2607µÄbuffÊÇ¾ùºâÕï¶Ï
+        //è·å–å¯ä»¥æ–½æ”¾æŠ€èƒ½çš„å¦å…‹é˜Ÿå‹ä¸­ç¬¬ä¸€ä¸ªæ²¡æœ‰ä½ çš„å•ç›¾çš„å¯¹è±¡ id2607çš„buffæ˜¯å‡è¡¡è¯Šæ–­
         if (!PartyHelper.CastableTanks.FirstOrDefault(agent => !agent.HasMyAura(2607)).IsNull())
         {   
             var slot = new Slot();
-            //Èç¹ûµ¥¶ÜÃ»·¨ÓÃ£¬ÔòÓÃÒ»ÏÂ¾ùºâ£¬Èç¹û¿ÉÒÔ£¬Ö±½Óµ¥¶Ü
+            //å¦‚æœå•ç›¾æ²¡æ³•ç”¨ï¼Œåˆ™ç”¨ä¸€ä¸‹å‡è¡¡ï¼Œå¦‚æœå¯ä»¥ï¼Œç›´æ¥å•ç›¾
             if (!Core.Get<IMemApiSage>().Eukrasia())
             {
                 slot.Add(SpellsDefine.Eukrasia.GetSpell());
             }
             slot.Add(new Spell(SpellsDefine.EukrasianDiagnosis, PartyHelper.CastableTanks.FirstOrDefault(agent => !agent.HasMyAura(2607))));
-            //Ö´ĞĞ²¢µÈ´ı
+            //æ‰§è¡Œå¹¶ç­‰å¾…
             await slot.Run(false);
         }
     }
@@ -67,10 +67,10 @@ public class ÏÍÕßÊÂ¼ş´¦Àí : IRotationEventHandler
 
     public void OnBattleUpdate(int currTime)
     {
-        // var ÁĞ±í = Core.Get<IMemApiData>().HighEndTerritory();
-        // if (!ÁĞ±í.Any(t => t.Item1 == Core.Get<IMemApiZoneInfo>().GetCurrTerrId()))
+        // var åˆ—è¡¨ = Core.Get<IMemApiData>().HighEndTerritory();
+        // if (!åˆ—è¡¨.Any(t => t.Item1 == Core.Get<IMemApiZoneInfo>().GetCurrTerrId()))
         // {
-        //     LogHelper.Print("Ñ¾Ï²»¶ÓÃÕâ¸ö´ò¸ßÄÑ£¿¸øÄãÓÎÏ·Õ¨ÁË°¡£¡");
+        //     LogHelper.Print("ä¸«å–œæ¬¢ç”¨è¿™ä¸ªæ‰“é«˜éš¾ï¼Ÿç»™ä½ æ¸¸æˆç‚¸äº†å•Šï¼");
         //     // Core.Get<IMemApiSendMessage>().SendMessage("/xlkill");
         //     
         // }

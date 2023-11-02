@@ -3,28 +3,28 @@ using Common;
 using Common.Define;
 using Common.Helper;
 
-namespace ²Ğ¹â.ÏÍÕß.ÄÜÁ¦¼¼;
-//¸ùËØµÄ£¬È±ÁË¾ÍÓÃ
-public class ÏÍÕßÄÜÁ¦¼¼_¸ùËØ : ISlotResolver
+namespace æ®‹å…‰.è´¤è€….èƒ½åŠ›æŠ€;
+//æ ¹ç´ çš„ï¼Œç¼ºäº†å°±ç”¨
+public class è´¤è€…èƒ½åŠ›æŠ€_æ ¹ç´  : ISlotResolver
 {
     public SlotMode SlotMode { get; } = SlotMode.OffGcd;
 
     public int Check()
-    {  //µÈ¼¶µÍÓÚ76Ö±½Ó±ğÓÃÁË£¬¸ùËØÃ»Ñ§»áÄØ
+    {  //ç­‰çº§ä½äº76ç›´æ¥åˆ«ç”¨äº†ï¼Œæ ¹ç´ æ²¡å­¦ä¼šå‘¢
         if (Core.Me.ClassLevel < 76) return -3;
-        //ÀäÈ´Ã»ºÃ²»ÓÃ
+        //å†·å´æ²¡å¥½ä¸ç”¨
         if (!SpellsDefine.Rhizomata.IsReady())
             return -1;
         //LogHelper.Info("MANA"+Core.Me.CurrentMana);
 
-        //¶¹×Ó´óÓÚµÈÓÚ2¿Å²»ÓÃ
+        //è±†å­å¤§äºç­‰äº2é¢—ä¸ç”¨
         if (Core.Get<IMemApiSage>().Addersgall() >= 2) return -2;
 
         return 0;
     }
 
     public void Build(Slot slot)
-    {   //¸ùËØ
+    {   //æ ¹ç´ 
         slot.Add(SpellsDefine.Rhizomata.GetSpell());
     }
 }

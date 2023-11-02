@@ -29,6 +29,9 @@ public class 贤者面板设置 : ISettingUI
             ImGuiHelper.LeftInputFloat("白牛阈值", ref 贤者设置.实例.白牛阈值, 0.01f);
             ImGuiHelper.LeftInputFloat("灵橡阈值", ref 贤者设置.实例.灵橡阈值, 0.01f);
             ImGuiHelper.LeftInputFloat("贤炮阈值", ref 贤者设置.实例.贤炮阈值, 0.01f);
+            ImGuiHelper.LeftInputFloat("GCD群奶阈值", ref 贤者设置.实例.GCD群奶阈值, 0.01f);
+            ImGuiHelper.LeftInputFloat("GCD单奶阈值", ref 贤者设置.实例.GCD单奶阈值, 0.01f);
+            ImGuiHelper.LeftInputFloat("不上dot阈值", ref 贤者设置.实例.不上dot阈值, 0.01f);
 
         // }
 

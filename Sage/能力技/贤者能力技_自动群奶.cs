@@ -3,72 +3,72 @@ using Common;
 using Common.Define;
 using Common.Helper;
 
-namespace ²Ğ¹â.ÏÍÕß.ÄÜÁ¦¼¼;
+namespace æ®‹å…‰.è´¤è€….èƒ½åŠ›æŠ€;
 
-//ÕâÀï°üº¬¼ÄÉúÇàÖ­ºÍ×ÔÉúµÄµ÷ÓÃÂß¼­
-public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯ÈºÄÌ : ISlotResolver
+//è¿™é‡ŒåŒ…å«å¯„ç”Ÿé’æ±å’Œè‡ªç”Ÿçš„è°ƒç”¨é€»è¾‘
+public class è´¤è€…èƒ½åŠ›æŠ€_è‡ªåŠ¨ç¾¤å¥¶ : ISlotResolver
 {
     public SlotMode SlotMode { get; } = SlotMode.OffGcd;
 
     public int Check()
     {
-        //QTÄÌÈË¹ØÁË¾ÍÌø¹ı
-        if (!Qt.GetQt("ÈºÄÌ"))
+        //QTå¥¶äººå…³äº†å°±è·³è¿‡
+        if (!Qt.GetQt("ç¾¤å¥¶"))
         {
             return -102;
         }
-         //QTÄÌÈË¹ØÁË¾ÍÌø¹ı
-        if (!Qt.GetQt("ÄÌÈË"))
+         //QTå¥¶äººå…³äº†å°±è·³è¿‡
+        if (!Qt.GetQt("å¥¶äºº"))
         {
             return -100;
         }
-        //Èç¹ûÔÚGetSpellÀï»ñÈ¡µ½µÄ¼¼ÄÜÊÇKardia Ò²Ìø¹ı£¬ÕâËµÃ÷ËùÓĞÕâ¸ö¿éÏÂµÄ¿Éµ÷ÓÃµÄ¼¼ÄÜ¶¼½øÈëÀäÈ´ÁË
+        //å¦‚æœåœ¨GetSpellé‡Œè·å–åˆ°çš„æŠ€èƒ½æ˜¯Kardia ä¹Ÿè·³è¿‡ï¼Œè¿™è¯´æ˜æ‰€æœ‰è¿™ä¸ªå—ä¸‹çš„å¯è°ƒç”¨çš„æŠ€èƒ½éƒ½è¿›å…¥å†·å´äº†
         if (Getspell()==SpellsDefine.Kardia.GetSpell())
         {
             return -5;
         }
+        //éƒ½ä¸è¡Œå°±è·³äº† è¿™ä¸ªå¯ä»¥ç”¨åœ¨ç¾¤å¥¶çš„ç¾¤ç›¾/è¯»æ¡é€»è¾‘ä¸Šï¼ˆä¹Ÿå¯ä»¥ç”¨åœ¨å•è¯»æ¡å¥¶çš„é€»è¾‘ä¸Šï¼Œä¸€ä¼šå„¿è®°å¾—å†™ï¼‰
+        if (!SpellsDefine.PhysisIi.IsReady() && !SpellsDefine.Physis.IsReady() && !SpellsDefine.Ixochole.IsReady()) return -6;
 
-        //Èç¹û Ğ¡¶Ó¶ÓÔ±.ÖÜÎ§30Ã×·¶Î§.µÄÑªÁ¿´óÓÚ0 ÇÒ ÑªÁ¿µÍÓÚÉè¶¨ÖĞ¸÷×ÔÄÌÁ¿ãĞÖµÊıÖµµÄ½ÇÉ«ÊıÁ¿ ´óÓÚ Éè¶¨µÄÈºÄÌÊıÄ¿ ÔòÖ´ĞĞ
-        if (PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.×ÔÉúãĞÖµ) >= ÏÍÕßÉèÖÃ.ÊµÀı.ÈºÄÌÊıÄ¿ ||
-            PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.¼ÄÉúãĞÖµ) >= ÏÍÕßÉèÖÃ.ÊµÀı.ÈºÄÌÊıÄ¿)
+        //å¦‚æœ å°é˜Ÿé˜Ÿå‘˜.å‘¨å›´30ç±³èŒƒå›´.çš„è¡€é‡å¤§äº0 ä¸” è¡€é‡ä½äºè®¾å®šä¸­å„è‡ªå¥¶é‡é˜ˆå€¼æ•°å€¼çš„è§’è‰²æ•°é‡ å¤§äº è®¾å®šçš„ç¾¤å¥¶æ•°ç›® åˆ™æ‰§è¡Œ
+        if (PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.è‡ªç”Ÿé˜ˆå€¼) >= è´¤è€…è®¾ç½®.å®ä¾‹.ç¾¤å¥¶æ•°ç›® ||
+            PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.å¯„ç”Ÿé˜ˆå€¼) >= è´¤è€…è®¾ç½®.å®ä¾‹.ç¾¤å¥¶æ•°ç›®)
         {
             return 2;
         }
-        //³£¹Ø£¬Ö»ÓĞĞèÒªÄÌµÄÊ±ºò²ÅÍ¨¹ıCheck
+        //å¸¸å…³ï¼Œåªæœ‰éœ€è¦å¥¶çš„æ—¶å€™æ‰é€šè¿‡Check
         return -1;
     }
 
     public void Build(Slot slot)
-    {   //½«»ñÈ¡µ½µÄ¼¼ÄÜ¼ÓÈëslotÊÍ·Å
+    {   //å°†è·å–åˆ°çš„æŠ€èƒ½åŠ å…¥sloté‡Šæ”¾
         slot.Add(Getspell());
     }
 
     Spell Getspell()
-    {   //Ğ¡¶Ó¶ÓÔ±.ÖÜÎ§30Ã×·¶Î§.µÄÑªÁ¿´óÓÚ0µÄ½ÇÉ«ÊıÄ¿
-        var Òª±»×ÔÉúÄÌµÄ = PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.×ÔÉúãĞÖµ);
-        var Òª±»¼ÄÉúÄÌµÄ = PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.¼ÄÉúãĞÖµ);
-        //ÓÅÏÈ×ÔÉú£¬Æä´Î¼ÄÉú
-        //Èç¹û ×ÔÉúÇåÖ­²»ÔÚÀäÈ´
+    {   //å°é˜Ÿé˜Ÿå‘˜.å‘¨å›´30ç±³èŒƒå›´.çš„è¡€é‡å¤§äº0çš„è§’è‰²æ•°ç›®
+        var è¦è¢«è‡ªç”Ÿå¥¶çš„ = PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.è‡ªç”Ÿé˜ˆå€¼);
+        var è¦è¢«å¯„ç”Ÿå¥¶çš„ = PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.å¯„ç”Ÿé˜ˆå€¼);
+        //ä¼˜å…ˆè‡ªç”Ÿï¼Œå…¶æ¬¡å¯„ç”Ÿ
+        //å¦‚æœ è‡ªç”Ÿæ¸…æ±ä¸åœ¨å†·å´
         if (SpellsDefine.PhysisIi.IsReady()||SpellsDefine.Physis.IsReady())
-        {   //Èç¹ûÖÜÎ§30Ã×·¶Î§.µÄÑªÁ¿´óÓÚ0ÇÒµÍÓÚ×ÔÉúÄÌÁ¿ãĞÖµµÄ½ÇÉ«ÊıÄ¿´óÓÚÉè¶¨µÄPPÖµ
-            if (Òª±»×ÔÉúÄÌµÄ >= ÏÍÕßÉèÖÃ.ÊµÀı.ÈºÄÌÊıÄ¿)
-            {   //¾Í·µ»Ø×ÔÉú½ø¼¼ÄÜ¶ÓÁĞ
-                LogHelper.Print($"×ÔÉúÍ¨¹ı");
+        {   //å¦‚æœå‘¨å›´30ç±³èŒƒå›´.çš„è¡€é‡å¤§äº0ä¸”ä½äºè‡ªç”Ÿå¥¶é‡é˜ˆå€¼çš„è§’è‰²æ•°ç›®å¤§äºè®¾å®šçš„PPå€¼
+            if (è¦è¢«è‡ªç”Ÿå¥¶çš„ >= è´¤è€…è®¾ç½®.å®ä¾‹.ç¾¤å¥¶æ•°ç›®)
+            {   //å°±è¿”å›è‡ªç”Ÿè¿›æŠ€èƒ½é˜Ÿåˆ—
                 return Core.Get<IMemApiSpell>().CheckActionChange(SpellsDefine.PhysisIi.GetSpell().Id).GetSpell();
             }
         }
-        //Èç¹û ¼ÄÉúÇåÖ­²»ÔÚÀäÈ´ ÇÒ ¶¹×Ó´óÓÚ1¸ö£¨ÁôÏÂÒ»¸ö¶¹×Ó¸ø¼á½Ç£©
+        //å¦‚æœ å¯„ç”Ÿæ¸…æ±ä¸åœ¨å†·å´ ä¸” è±†å­å¤§äº1ä¸ªï¼ˆç•™ä¸‹ä¸€ä¸ªè±†å­ç»™åšè§’ï¼‰
         else if (SpellsDefine.Ixochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=2)
-        {   //Èç¹ûÖÜÎ§30Ã×·¶Î§.µÄÑªÁ¿´óÓÚ0ÇÒµÍÓÚ¼ÄÉúÄÌÁ¿ãĞÖµµÄ½ÇÉ«ÊıÄ¿´óÓÚÉè¶¨µÄPPÖµ
-            if (Òª±»¼ÄÉúÄÌµÄ >= ÏÍÕßÉèÖÃ.ÊµÀı.ÈºÄÌÊıÄ¿)
-            {   //¾Í·µ»Ø¼ÄÉúÇàÖ­½ø¼¼ÄÜ¶ÓÁĞ
-                LogHelper.Print($"¼ÄÉúÍ¨¹ı");
+        {   //å¦‚æœå‘¨å›´30ç±³èŒƒå›´.çš„è¡€é‡å¤§äº0ä¸”ä½äºå¯„ç”Ÿå¥¶é‡é˜ˆå€¼çš„è§’è‰²æ•°ç›®å¤§äºè®¾å®šçš„PPå€¼
+            if (è¦è¢«å¯„ç”Ÿå¥¶çš„ >= è´¤è€…è®¾ç½®.å®ä¾‹.ç¾¤å¥¶æ•°ç›®)
+            {   //å°±è¿”å›å¯„ç”Ÿé’æ±è¿›æŠ€èƒ½é˜Ÿåˆ—
                 return SpellsDefine.Ixochole.GetSpell();
             }
         }
 
 
-        //·ñÔò·µ»ØKardiaÕâ¸ö¼¼ÄÜ£¬»á±»ÉÏÃæµÄCheckÅĞ¶ÏÌø¹ıÕâ¸ö¿éµÄÅĞ¶Ï
+        //å¦åˆ™è¿”å›Kardiaè¿™ä¸ªæŠ€èƒ½ï¼Œä¼šè¢«ä¸Šé¢çš„Checkåˆ¤æ–­è·³è¿‡è¿™ä¸ªå—çš„åˆ¤æ–­
         return SpellsDefine.Kardia.GetSpell();
     }
 }

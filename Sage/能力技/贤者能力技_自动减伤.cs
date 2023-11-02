@@ -3,30 +3,30 @@ using Common;
 using Common.Define;
 using Common.Helper;
 
-namespace ²Ğ¹â.ÏÍÕß.ÄÜÁ¦¼¼;
-//ÕâÀï°üº¬ Èºº£Âí ÕÖ×Ó ÕûÌåÂÛµÄµ÷ÓÃÂß¼­
-public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯¼õÉË : ISlotResolver
+namespace æ®‹å…‰.è´¤è€….èƒ½åŠ›æŠ€;
+//è¿™é‡ŒåŒ…å« ç¾¤æµ·é©¬ ç½©å­ æ•´ä½“è®ºçš„è°ƒç”¨é€»è¾‘
+public class è´¤è€…èƒ½åŠ›æŠ€_è‡ªåŠ¨å‡ä¼¤ : ISlotResolver
 {
     public SlotMode SlotMode { get; } = SlotMode.OffGcd;
 
     public int Check()
-    {  //¼õÉËQT¹ØÁËÌø¹ı
-        if (!Qt.GetQt("¼õÉË"))
+    {  //å‡ä¼¤QTå…³äº†è·³è¿‡
+        if (!Qt.GetQt("å‡ä¼¤"))
         {
             return -101;
         }
 
-        //ÄÌÈËQT¹ØÁËÌø¹ı
-        if (!Qt.GetQt("ÄÌÈË"))
+        //å¥¶äººQTå…³äº†è·³è¿‡
+        if (!Qt.GetQt("å¥¶äºº"))
         {
             return -100;
         }
-        //getspell·µ»ØÁËKardiaËµÃ÷µ÷ÓÃµÄ¼¼ÄÜ¶¼ÔÚÀäÈ´ Ò²Ìø¹ı
+        //getspellè¿”å›äº†Kardiaè¯´æ˜è°ƒç”¨çš„æŠ€èƒ½éƒ½åœ¨å†·å´ ä¹Ÿè·³è¿‡
         if (Getspell()==SpellsDefine.Kardia.GetSpell())
         {
             return -5;
         }
-        //ÅĞ¶ÏÏÖÔÚ¶ÁÌõµÄÊÇ²»ÊÇAOE ÊÇµÄ»°¾Í×¼±¸·Å¼¼ÄÜ
+        //åˆ¤æ–­ç°åœ¨è¯»æ¡çš„æ˜¯ä¸æ˜¯AOE æ˜¯çš„è¯å°±å‡†å¤‡æ”¾æŠ€èƒ½
 
         if (!Core.Me.GetCurrTarget().IsNull() && Core.Me.GetCurrTarget().IsCasting)
         {
@@ -40,7 +40,7 @@ public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯¼õÉË : ISlotResolver
                     
         }
 
-        //Ö»ÔÚĞèÒª¼õÉËµÄµØ·½¿ª£¬ÒòÎª°×Å£ºÍÕâ¸ö¼õÉË»¥³â£¬ËùÒÔ²»ĞèÒªÒ»Ö±¿ª×Å
+        //åªåœ¨éœ€è¦å‡ä¼¤çš„åœ°æ–¹å¼€ï¼Œå› ä¸ºç™½ç‰›å’Œè¿™ä¸ªå‡ä¼¤äº’æ–¥ï¼Œæ‰€ä»¥ä¸éœ€è¦ä¸€ç›´å¼€ç€
         return -1;
     }
 
@@ -50,10 +50,10 @@ public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯¼õÉË : ISlotResolver
     }
 
     Spell Getspell()
-    {   //Èç¹ûÕÖ×ÓºÃÁË¶¹×ÓÓĞ ·ÅÕÖ×Ó
+    {   //å¦‚æœç½©å­å¥½äº†è±†å­æœ‰ æ”¾ç½©å­
         if (SpellsDefine.Kerachole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
         {
-            //Èç¹ûÉíÉÏÓĞº£Âí/ÕûÌåÂÛµÄbuff£¬¾Í²»·ÅÁË
+            //å¦‚æœèº«ä¸Šæœ‰æµ·é©¬/æ•´ä½“è®ºçš„buffï¼Œå°±ä¸æ”¾äº†
             if (Core.Me.HasAura(2613) || Core.Me.HasAura(3003))
             {
 
@@ -63,10 +63,10 @@ public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯¼õÉË : ISlotResolver
 
             return SpellsDefine.Kerachole.GetSpell();
         }
-        //ÕÖ×ÓÃ»ºÃ·ÅÈºº£Âí
+        //ç½©å­æ²¡å¥½æ”¾ç¾¤æµ·é©¬
         if (SpellsDefine.Panhaima.IsReady())
         {
-            //Èç¹ûÉíÉÏÓĞÕÖ×Ó/ÕûÌåÂÛµÄbuff£¬¾Í²»·ÅÁË
+            //å¦‚æœèº«ä¸Šæœ‰ç½©å­/æ•´ä½“è®ºçš„buffï¼Œå°±ä¸æ”¾äº†
             if (Core.Me.HasAura(3003) || Core.Me.HasAura(2938))
             {
 
@@ -75,10 +75,10 @@ public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯¼õÉË : ISlotResolver
 
             return SpellsDefine.Panhaima.GetSpell();
         }
-        //Èºº£ÂíÃ»ºÃ·ÅÕûÌåÂÛ
+        //ç¾¤æµ·é©¬æ²¡å¥½æ”¾æ•´ä½“è®º
         if (SpellsDefine.Holos.IsReady())
         {
-            //Èç¹ûÉíÉÏÓĞÕÖ×Ó/Èºº£ÂíµÄbuff£¬¾Í²»·ÅÁË id2938 ÕÖ×Ó 2613Èºº£Âí 3003ÕûÌåÂÛ
+            //å¦‚æœèº«ä¸Šæœ‰ç½©å­/ç¾¤æµ·é©¬çš„buffï¼Œå°±ä¸æ”¾äº† id2938 ç½©å­ 2613ç¾¤æµ·é©¬ 3003æ•´ä½“è®º
             if (Core.Me.HasAura(2938) || Core.Me.HasAura(2613))
             {
 
@@ -90,7 +90,7 @@ public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯¼õÉË : ISlotResolver
         }
 
 
-        //¶¼²»ĞĞ·µ»Økardia ÈÃcheck×Ô¼ºÌø¹ı
+        //éƒ½ä¸è¡Œè¿”å›kardia è®©checkè‡ªå·±è·³è¿‡
         return SpellsDefine.Kardia.GetSpell();
     }
 }

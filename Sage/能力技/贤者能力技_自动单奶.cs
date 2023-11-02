@@ -3,160 +3,156 @@ using Common;
 using Common.Define;
 using Common.Helper;
 
-namespace ²Ğ¹â.ÏÍÕß.ÄÜÁ¦¼¼;
-//ÕâÀï°üº¬ °×Å£ ÁéÏğ º£Âí »ìºÏ
-public class ÏÍÕßÄÜÁ¦¼¼_×Ô¶¯µ¥ÄÌ : ISlotResolver
+namespace æ®‹å…‰.è´¤è€….èƒ½åŠ›æŠ€;
+//è¿™é‡ŒåŒ…å« ç™½ç‰› çµæ©¡ æµ·é©¬ æ··åˆ
+public class è´¤è€…èƒ½åŠ›æŠ€_è‡ªåŠ¨å•å¥¶ : ISlotResolver
 {
     public SlotMode SlotMode { get; } = SlotMode.OffGcd;
 
     public int Check()
-    {   //QTÄÌÈË¹ØÁË¾Í¹ı
-        if (!Qt.GetQt("ÄÌÈË"))
+    {   //QTå¥¶äººå…³äº†å°±è¿‡
+        if (!Qt.GetQt("å¥¶äºº"))
         {
             return -100;
         }
 
-        //getspellÊÇKardiaÒ²¹ı ËµÃ÷¶¼½øÀäÈ´ÁË
+        //getspellæ˜¯Kardiaä¹Ÿè¿‡ è¯´æ˜éƒ½è¿›å†·å´äº†
         if (Getspell() == SpellsDefine.Kardia.GetSpell())
         {
             return -5;
         }
 
-        //¶¹×ÓÁôÒ»¸ö
-        if (Core.Get<IMemApiSage>().Addersgall() < 2)
-            return -6;
 
+        //å¦‚æœå‘¨å›´ä¸‰åç±³èŒƒå›´å†…å°é˜Ÿæˆå‘˜ æ²¡æ­»çš„ è¡€é‡ä½äºé˜ˆå€¼çš„ å¤§äºç­‰äº1ä¸ª å°±å‡†å¤‡å¼€å¥¶ å•æµ·é©¬å•ç‹¬åˆ¤æ–­ï¼Œåªç»™T,æ’é™¤æ­»è€Œä¸åƒµçš„,è¡Œå°¸èµ°è‚‰çš„ 
 
-        //Èç¹ûÖÜÎ§ÈıÊ®Ã×·¶Î§ÄÚĞ¡¶Ó³ÉÔ± Ã»ËÀµÄ ÑªÁ¿µÍÓÚãĞÖµµÄ ´óÓÚµÈÓÚ1¸ö ¾Í×¼±¸¿ªÄÌ µ¥º£Âíµ¥¶ÀÅĞ¶Ï£¬Ö»¸øT,ÅÅ³ıËÀ¶ø²»½©µÄ,ĞĞÊ¬×ßÈâµÄ 
-
-        List<uint> ÅÅ³ıbuff = new List<uint>
+        List<uint> æ’é™¤buff = new List<uint>
         {
-            3255,//ÅÅ³ı³öËÀÈëÉú
-            AurasDefine.Holmgang,//ÅÅ³ıËÀ¶·
-            AurasDefine.Superbolide//ÅÅ³ı³¬»ğÁ÷ĞÇ
+            3255,//æ’é™¤å‡ºæ­»å…¥ç”Ÿ
+            AurasDefine.Holmgang,//æ’é™¤æ­»æ–—
+            AurasDefine.Superbolide//æ’é™¤è¶…ç«æµæ˜Ÿ
         };
+        //
+        var æµ·é©¬ç›®æ ‡è¡€é‡ = PartyHelper.CastableAlliesWithin30//å‘¨å›´30ç±³
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.å•æµ·é©¬é˜ˆå€¼ && r.IsTank() && //è¡€é‡å¤§äº0 ä¸” ä½äºè®¾ç½®çš„é˜ˆå€¼
+                                              !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(æ’é™¤buff, 3000))//ä¸” ä¸å…·æœ‰å‡ ä¸ªbuff ä¸”ä¸å…·æœ‰listä¸­çš„buff 3ç§’
+            .OrderBy(r => r.CurrentHealthPercent)//æ’åº
+            .FirstOrDefault();
 
-        var º£ÂíÄ¿±êÑªÁ¿ = PartyHelper.CastableAlliesWithin30
-            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.µ¥º£ÂíãĞÖµ && r.IsTank() &&
-                                              !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(ÅÅ³ıbuff, 3000))
+        var ç™½ç‰›ç›®æ ‡è¡€é‡ = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.ç™½ç‰›é˜ˆå€¼ &&
+                                              !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(æ’é™¤buff, 3000))
             .OrderBy(r => r.CurrentHealthPercent)
             .FirstOrDefault();
 
-        var °×Å£Ä¿±êÑªÁ¿ = PartyHelper.CastableAlliesWithin30
-            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.°×Å£ãĞÖµ &&
-                                              !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(ÅÅ³ıbuff, 3000))
-            .OrderBy(r => r.CurrentHealthPercent)
-            .FirstOrDefault();
-
-        var ÁéÏğÄ¿±êÑªÁ¿ = PartyHelper.CastableAlliesWithin30
-            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.ÁéÏğãĞÖµ &&
-                                              !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(ÅÅ³ıbuff, 3000))
+        var çµæ©¡ç›®æ ‡è¡€é‡ = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.çµæ©¡é˜ˆå€¼ &&
+                                              !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(æ’é™¤buff, 3000))
             .OrderBy(r => r.CurrentHealthPercent)
             .FirstOrDefault();
 
 
 
-        if (º£ÂíÄ¿±êÑªÁ¿.IsValid)
+        if (æµ·é©¬ç›®æ ‡è¡€é‡.IsValid)
         {
             return 5;
         
         }
 
-        if (°×Å£Ä¿±êÑªÁ¿.IsValid)
+        if (ç™½ç‰›ç›®æ ‡è¡€é‡.IsValid)
         {
             return 3;
         }
 
-        if (ÁéÏğÄ¿±êÑªÁ¿.IsValid)
+        if (çµæ©¡ç›®æ ‡è¡€é‡.IsValid)
         {
             return 2;
         }
 
-        //³£¹Ø Ö»ÓĞÉÏÃæÄÇ¸ö¹ıÁË²Å»áÄÌ
+        //å¸¸å…³ åªæœ‰ä¸Šé¢é‚£ä¸ªè¿‡äº†æ‰ä¼šå¥¶
         return -1;
     }
 
     public void Build(Slot slot)
-    {   //°Ñ»ñÈ¡µ½µÄ¼¼ÄÜ¼ÓÈëslot Ä¿±êÉè¶¨Îª Ğ¡¶ÓÁĞ±íÖĞÑªÁ¿×îµÍµÄÄÇ¸ö
+    {   //æŠŠè·å–åˆ°çš„æŠ€èƒ½åŠ å…¥slot ç›®æ ‡è®¾å®šä¸º å°é˜Ÿåˆ—è¡¨ä¸­è¡€é‡æœ€ä½çš„é‚£ä¸ª
 
 
 
-        //¶ÔÆÕÍ¨ÈËµÄ
-        var ¼¼ÄÜÄ¿±ê = PartyHelper.CastableAlliesWithin30   //ÖÜÎ§ÈıÊ®Ã×·¶Î§
-        .Where(r => r.CurrentHealth > 0)   //Ã»ËÀµÄ
-        .OrderBy(r => r.CurrentHealthPercent) //µ±Ç°½¡¿µ°Ù·Ö±ÈÅÅĞò
+        //å¯¹æ™®é€šäººçš„
+        var æŠ€èƒ½ç›®æ ‡ = PartyHelper.CastableAlliesWithin30   //å‘¨å›´ä¸‰åç±³èŒƒå›´
+        .Where(r => r.CurrentHealth > 0)   //æ²¡æ­»çš„
+        .OrderBy(r => r.CurrentHealthPercent) //å½“å‰å¥åº·ç™¾åˆ†æ¯”æ’åº
         .FirstOrDefault();
 
-        //¶ÔTµÄÄ¿±êÉèÖÃ
-        var ¼¼ÄÜÄ¿±ê¶ÔT = PartyHelper.CastableAlliesWithin30
+        //å¯¹Tçš„ç›®æ ‡è®¾ç½®
+        var æŠ€èƒ½ç›®æ ‡å¯¹T = PartyHelper.CastableAlliesWithin30
         .Where(r => r.CurrentHealth > 0 && r.IsTank())
         .OrderBy(r => r.CurrentHealthPercent)
         .FirstOrDefault();
 
 
-        //Èç¹û»ñÈ¡µÄÊÇÅÖº£Âí£¬ÄÇ¾Í¶ÔTÓÃ ÔÚÅĞ¶ÏÓĞÃ»ÓĞ»ìºÏ¸øÒ»ÏÂ
+        //å¦‚æœè·å–çš„æ˜¯èƒ–æµ·é©¬ï¼Œé‚£å°±å¯¹Tç”¨ åœ¨åˆ¤æ–­æœ‰æ²¡æœ‰æ··åˆç»™ä¸€ä¸‹
         if (Getspell() == SpellsDefine.Haima.GetSpell())
         {
             if (SpellsDefine.Krasis.IsReady()) slot.Add(SpellsDefine.Krasis.GetSpell());
-            slot.Add(new Spell(Getspell().Id, ¼¼ÄÜÄ¿±ê¶ÔT));
+            slot.Add(new Spell(Getspell().Id, æŠ€èƒ½ç›®æ ‡å¯¹T));
         }
-        //ÆäËûÇé¿öÕı³£¸ø×îµÍÑªµÄ
-        else slot.Add(new Spell(Getspell().Id, ¼¼ÄÜÄ¿±ê));
+        //å…¶ä»–æƒ…å†µæ­£å¸¸ç»™æœ€ä½è¡€çš„
+        else slot.Add(new Spell(Getspell().Id, æŠ€èƒ½ç›®æ ‡));
     }
 
     Spell Getspell()
-    {   //Éè¶¨Ò»ÏÂ¼¸¸öÄ¿±ê
-        List<uint> ÅÅ³ıbuff = new List<uint>
+    {   //è®¾å®šä¸€ä¸‹å‡ ä¸ªç›®æ ‡
+        List<uint> æ’é™¤buff = new List<uint>
         {
-            3255,//ÅÅ³ı³öËÀÈëÉú
-            AurasDefine.Holmgang,//ÅÅ³ıËÀ¶·
-            AurasDefine.Superbolide//ÅÅ³ı³¬»ğÁ÷ĞÇ
+            3255,//æ’é™¤å‡ºæ­»å…¥ç”Ÿ
+            AurasDefine.Holmgang,//æ’é™¤æ­»æ–—
+            AurasDefine.Superbolide//æ’é™¤è¶…ç«æµæ˜Ÿ
         };
         
-        var º£ÂíÄ¿±ê = PartyHelper.CastableAlliesWithin30
-            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.µ¥º£ÂíãĞÖµ && r.IsTank() &&
-                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(ÅÅ³ıbuff, 3000))
+        var æµ·é©¬ç›®æ ‡ = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.å•æµ·é©¬é˜ˆå€¼ && r.IsTank() &&
+                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(æ’é™¤buff, 3000))
             .OrderBy(r => r.CurrentHealthPercent)
             .FirstOrDefault();
-        var °×Å£Ä¿±ê = PartyHelper.CastableAlliesWithin30
-            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.°×Å£ãĞÖµ &&
-                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(ÅÅ³ıbuff, 3000))
-            .OrderBy(r => r.CurrentHealthPercent)
-            .FirstOrDefault();
-
-        var ÁéÏğÄ¿±ê = PartyHelper.CastableAlliesWithin30
-            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.ÁéÏğãĞÖµ &&
-                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(ÅÅ³ıbuff, 3000))
+        var ç™½ç‰›ç›®æ ‡ = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.ç™½ç‰›é˜ˆå€¼ &&
+                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(æ’é™¤buff, 3000))
             .OrderBy(r => r.CurrentHealthPercent)
             .FirstOrDefault();
 
-        //Èç¹ûµ¥º£ÂíÀäÈ´ºÃÁË
+        var çµæ©¡ç›®æ ‡ = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.çµæ©¡é˜ˆå€¼ &&
+                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(æ’é™¤buff, 3000))
+            .OrderBy(r => r.CurrentHealthPercent)
+            .FirstOrDefault();
+
+        //å¦‚æœå•æµ·é©¬å†·å´å¥½äº†
         if (SpellsDefine.Haima.IsReady())
-        {   //¿´¿´´æÔÚ²»
-            if (º£ÂíÄ¿±ê.IsValid)
-            {   //ÊÇµÄ»°¾Í°Ñº£Âí¼Ó½øÈ¥ÁË
+        {   //çœ‹çœ‹å­˜åœ¨ä¸
+            if (æµ·é©¬ç›®æ ‡.IsValid)
+            {   //æ˜¯çš„è¯å°±æŠŠæµ·é©¬åŠ è¿›å»äº†
                     return SpellsDefine.Haima.GetSpell();
             }
         }
-        //Èç¹ûº£ÂíÀäÈ´Ã»ºÃ£¬¾Í¿´¿´Õâ¸ö°×Å£ºÃÃ»ºÃ Ë³±ã¼ì²éÒ»ÏÂ¶¹×Ó¹»²»
+        //å¦‚æœæµ·é©¬å†·å´æ²¡å¥½ï¼Œå°±çœ‹çœ‹è¿™ä¸ªç™½ç‰›å¥½æ²¡å¥½ é¡ºä¾¿æ£€æŸ¥ä¸€ä¸‹è±†å­å¤Ÿä¸
         if (SpellsDefine.Taurochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
-        {   //¿´¿´ÑªÁ¿×îµÍÄÇÈËÊÇ²»ÊÇÌØµÍ
-            if (°×Å£Ä¿±ê.IsValid)
-            {   //ÊÇµÄ»°¾Í°Ñ°×Å£¼Ó½øÈ¥ÁË
+        {   //çœ‹çœ‹è¡€é‡æœ€ä½é‚£äººæ˜¯ä¸æ˜¯ç‰¹ä½
+            if (ç™½ç‰›ç›®æ ‡.IsValid)
+            {   //æ˜¯çš„è¯å°±æŠŠç™½ç‰›åŠ è¿›å»äº†
                 return SpellsDefine.Taurochole.GetSpell();
             }
         }
-        //Èç¹ûº£Âí °×Å£ ÀäÈ´Ã»ºÃ£¬¾Í¿´¿´Õâ¸öÁéÏğºÃÃ»ºÃ Ë³±ã¼ì²éÒ»ÏÂ¶¹×Ó¹»²»
+        //å¦‚æœæµ·é©¬ ç™½ç‰› å†·å´æ²¡å¥½ï¼Œå°±çœ‹çœ‹è¿™ä¸ªçµæ©¡å¥½æ²¡å¥½ é¡ºä¾¿æ£€æŸ¥ä¸€ä¸‹è±†å­å¤Ÿä¸
 
         if (SpellsDefine.Druochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
-        {   //¿´¿´ÑªÁ¿×îµÍÄÇÈËÊÇ²»ÊÇÌØµÍ
-            if (ÁéÏğÄ¿±ê.IsValid)
-            {   //ÊÇµÄ»°¾Í°ÑÁéÏğ¼Ó½øÈ¥ÁË
+        {   //çœ‹çœ‹è¡€é‡æœ€ä½é‚£äººæ˜¯ä¸æ˜¯ç‰¹ä½
+            if (çµæ©¡ç›®æ ‡.IsValid)
+            {   //æ˜¯çš„è¯å°±æŠŠçµæ©¡åŠ è¿›å»äº†
                 return SpellsDefine.Druochole.GetSpell();
             }
         }
 
-        //¶¼²»ĞĞ¾Í·µ»Ø¸öKardia ÈÃcheckÅĞ¶ÏÌø¹ıÁË
+        //éƒ½ä¸è¡Œå°±è¿”å›ä¸ªKardia è®©checkåˆ¤æ–­è·³è¿‡äº†
 
         return SpellsDefine.Kardia.GetSpell();
     }

@@ -47,11 +47,14 @@ public class 贤者覆盖层界面
         ImGui.Text($"该ACR仅能用于日随，如果你用它打高难奶死人了");
         ImGui.Text($"找我反馈别怪我骂你。");
         ImGui.Text($"11.2更新 - 基本能跑");
+        ImGui.Text($"加入了自动康复逻辑、GCD奶逻辑和海马给死刑T的逻辑");
+        ImGui.Text($"如果不想给低血量小怪上毒，请设置不上dot的血量百分比阈值");
         ImGui.Text($"日随有逻辑优化的部分记得找作者反馈，谢谢。");
         ImGui.Text($"顺带一提，别乱玩轮盘赌，真的会炸掉游戏");
         ImGui.Text($"有需要自行调节各个单奶/群奶的奶量阈值时");
         ImGui.Text($"请前往acr设置界面进行设置");
-        ImGui.Text($"特别鸣谢F佬，Anmi在撰写ACR时提供的帮助");
+        ImGui.Text($"特别鸣谢F佬，Anmi，Ricky在撰写ACR时提供的帮助");
+        ImGui.Text($"特别鸣谢Rio布鲁，Minami在测试ACR时提供的帮助");
 
     }
 

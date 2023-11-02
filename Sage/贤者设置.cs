@@ -30,12 +30,15 @@ public class 贤者设置
         }
     }
     //这里是默认的阈值
-    public float 自生阈值 = 0.7f;
+    public float 自生阈值 = 0.70f;
     public float 寄生阈值 = 0.65f;
-    public float 单海马阈值 = 0.6f;
-    public float 白牛阈值 = 0.5f;
-    public float 灵橡阈值 = 0.4f;
+    public float 单海马阈值 = 0.75f;
+    public float 白牛阈值 = 0.55f;
+    public float 灵橡阈值 = 0.6f;
     public float 贤炮阈值 = 0.65f;
+    public float GCD群奶阈值 = 0.50f;
+    public float GCD单奶阈值 = 0.40f;
+    public float 不上dot阈值 = 0.03f;
 
     public int 群奶数目 = 2;
     

@@ -16,7 +16,7 @@ public class 贤者基础条目 : IRotationEntry
     public static JobViewWindow 职业视图窗口;
     
     private readonly 贤者覆盖层界面 _lazyOverlay = new();
-    public string OverlayTitle { get; } = "贤者";
+    public string OverlayTitle { get; } = "日随用贤者";
 
     public void DrawOverlay()
     {
@@ -30,8 +30,10 @@ public class 贤者基础条目 : IRotationEntry
     public List<ISlotResolver> SlotResolvers = new()
     {
         new 贤者GCD_复活(),
+        new 贤者GCD_康复(),
         new 贤者能力技_自动减伤(),
         new 贤者能力技_自动群奶(),
+        new 贤者能力技_单海马死刑(),
         new 贤者能力技_自动单奶(),
 
         new 贤者能力技_醒梦(),
@@ -43,6 +45,8 @@ public class 贤者基础条目 : IRotationEntry
         new 贤者GCD_箭毒(),
         new 贤者GCD_贤炮(),
         new 贤者GCD_群盾(),
+        new 贤者GCD_预后(),
+        new 贤者GCD_诊断(),
         new 贤者GCD_基础()
 
 
@@ -82,6 +86,7 @@ public class 贤者基础条目 : IRotationEntry
         jobViewWindow.AddQt("群盾", true);
         jobViewWindow.AddQt("减伤", true);
         jobViewWindow.AddQt("群奶", true);
+        jobViewWindow.AddQt("自动康复", true);
 
         //jobViewWindow.AddQt("失衡走位", false);
 
@@ -90,8 +95,7 @@ public class 贤者基础条目 : IRotationEntry
         jobViewWindow.AddHotkey("拯救", new HotKeyResolver_NormalSpell(24294, SpellTargetType.Self, false));
         jobViewWindow.AddHotkey("防击退", new HotKeyResolver_NormalSpell(7559, SpellTargetType.Self, false));
         jobViewWindow.AddHotkey("消化", new HotKeyResolver_NormalSpell(24301, SpellTargetType.Self, false));
-
-        jobViewWindow.AddHotkey("群盾接消化", new HotkeyResolver_General(@"Resources/Spells/Sage/群盾接消化.png",
+        jobViewWindow.AddHotkey("群盾接消化", new HotkeyResolver_General("../../RotationPlugin/Zanhikari/Resources/群盾接消化.png",
     () =>
     {
         AI.Instance.BattleData.HighPrioritySlots_GCD.Enqueue(SpellsDefine.Eukrasia.GetSpell());

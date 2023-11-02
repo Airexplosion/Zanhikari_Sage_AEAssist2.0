@@ -12,15 +12,18 @@ public class 贤者GCD_群盾 : ISlotResolver
 
     public int Check()
     {
+
         //群盾QT没开不刷
         if (!Qt.GetQt("群盾")) return -7;
         //拉人QT没开不刷
         if (!Qt.GetQt("奶人")) return -2;
+        //30级还没学会均衡，不刷
+        if (Core.Me.ClassLevel < 30) return -3;
 
         //蓝量小于3000不刷
         if (Core.Me.CurrentMana < 3000) return -3;
         //自己身上有群盾不刷
-        if (Core.Me.HasAura(2609) || Core.Me.HasAura(2866)) return -6;
+        if (Core.Me.HasAura(2609)) return -6;
         //不是boss aoe不刷 判断一下目标是不是在读条 且是boss，并且读条不会读时间太长，比群盾时间还长
         //判断现在读条的是不是AOE 是的话就准备放技能
 

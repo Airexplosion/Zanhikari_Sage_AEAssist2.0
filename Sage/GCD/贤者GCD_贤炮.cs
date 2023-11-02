@@ -9,32 +9,34 @@ using Common.Helper;
 
 #endregion
 
-namespace ²Ğ¹â.ÏÍÕß.GCD;
+namespace æ®‹å…‰.è´¤è€….GCD;
 
-public class ÏÍÕßGCD_ÏÍÅÚ : ISlotResolver
+public class è´¤è€…GCD_è´¤ç‚® : ISlotResolver
 {
     public SlotMode SlotMode { get; } = SlotMode.Gcd;
 
     public int Check()
-    {
-        if (!SpellsDefine.Pneuma.IsReady()) return -10;//ÔÚÀäÈ´Ìø¹ı
+    {   //è™½ç„¶isredyåŒ…å«ï¼Œä½†ç­‰çº§ä¸åˆ°è¿˜æ˜¯ä¸æ‰“
+        if (Core.Me.ClassLevel < 90) return -3;
 
-        if (!Qt.GetQt("ÖÎÁÆ"))//Èç¹ûQTÊÇ¹ØµÄ£¬Ôòµ±AOE´ò£¬¾ØĞÎ·¶Î§ÄÚÓĞ¾Í´ò£¬Ã»ÓĞ¾ÍµÈĞèÒªÄÌÔÙ´ò
-        {   //¿ªµÄ£¬¾Í²»×ßÕâ¸öÂß¼­
-            if (TargetHelper.GetEnemyCountInsideRect(Core.Me, Core.Me.GetCurrTarget(), 25, 4) >= 2)
+        if (!SpellsDefine.Pneuma.IsReady()) return -10;//åœ¨å†·å´è·³è¿‡
+
+        if (!Qt.GetQt("æ²»ç–—"))//å¦‚æœQTæ˜¯å…³çš„ï¼Œåˆ™å½“AOEæ‰“ï¼ŒçŸ©å½¢èŒƒå›´å†…æœ‰å°±æ‰“ï¼Œæ²¡æœ‰å°±ç­‰éœ€è¦å¥¶å†æ‰“
+        {   //å¼€çš„ï¼Œå°±ä¸èµ°è¿™ä¸ªé€»è¾‘
+            if (TargetHelper.GetEnemyCountInsideRect(Core.Me, Core.Me.GetCurrTarget(), 25, 3) >= 2)
                 return 2;
         }   
-        if (Qt.GetQt("ÖÎÁÆ"))//Èç¹ûQT¿ªÁË£¬
+        if (Qt.GetQt("æ²»ç–—"))//å¦‚æœQTå¼€äº†ï¼Œ
         {
-            if (PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= ÏÍÕßÉèÖÃ.ÊµÀı.ÏÍÅÚãĞÖµ) >= ÏÍÕßÉèÖÃ.ÊµÀı.ÈºÄÌÊıÄ¿)
+            if (PartyHelper.CastableAlliesWithin30.Count(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= è´¤è€…è®¾ç½®.å®ä¾‹.è´¤ç‚®é˜ˆå€¼) >= è´¤è€…è®¾ç½®.å®ä¾‹.ç¾¤å¥¶æ•°ç›®)
                 return 3;
 
-            else if (TargetHelper.GetEnemyCountInsideRect(Core.Me, Core.Me.GetCurrTarget(), 25, 4) >= 2)
+            else if (TargetHelper.GetEnemyCountInsideRect(Core.Me, Core.Me.GetCurrTarget(), 25, 3) >= 2)
                 return 4;
         }
 
 
-        //²»ÔÚÒÆ¶¯ / ²»ĞèÓ½³ª ²Å´ò
+        //ä¸åœ¨ç§»åŠ¨ / ä¸éœ€å’å”± æ‰æ‰“
         if (Core.Get<IMemApiMove>().IsMoving() && !Core.Me.HasAura(AurasDefine.Swiftcast)) return -2;
         return -2;
     }

@@ -3,25 +3,25 @@ using Common;
 using Common.Define;
 using Common.Helper;
 
-namespace ²Ð¹â.ÏÍÕß.ÄÜÁ¦¼¼;
-//ÐÑÃÎµÄ ºÃÁË¾ÍÓÃ
-public class ÏÍÕßÄÜÁ¦¼¼_ÐÑÃÎ : ISlotResolver
+namespace æ®‹å…‰.è´¤è€….èƒ½åŠ›æŠ€;
+//é†’æ¢¦çš„ å¥½äº†å°±ç”¨
+public class è´¤è€…èƒ½åŠ›æŠ€_é†’æ¢¦ : ISlotResolver
 {
     public SlotMode SlotMode { get; } = SlotMode.OffGcd;
 
     public int Check()
-    {   //ÀäÈ´Ã»ºÃ²»ÓÃ
+    {   //å†·å´æ²¡å¥½ä¸ç”¨
         if (!SpellsDefine.LucidDreaming.IsReady())
             return -1;
         //LogHelper.Info("MANA"+Core.Me.CurrentMana);
 
-        //À¶Á¿´óÓÚ8000²»ÓÃ
+        //è“é‡å¤§äºŽ8000ä¸ç”¨
         if (Core.Me.CurrentMana > 8000) return -2;
         return 0;
     }
 
     public void Build(Slot slot)
-    {   //¿ñÓÃÐÑÃÎ
+    {   //ç‹‚ç”¨é†’æ¢¦
         slot.Add(SpellsDefine.LucidDreaming.GetSpell());
     }
 }

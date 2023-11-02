@@ -22,12 +22,16 @@ public class 贤者GCD_Dot : ISlotResolver
         //加入dot黑名单了也别用
         if (DotBlacklistHelper.IsBlackList(Core.Me.GetCurrTarget()))
             return -10;
+
+
+
         //不是boss不上毒了
         if (!Core.Me.GetCurrTarget().IsBoss())
         {
             //如果在移动，可以小上一下
             if (Core.Get<IMemApiMove>().IsMoving())
             {
+
                 return 8;
             }
             //TargetHelper.IsBoss(Core.Me.GetCurrTarget());
@@ -50,6 +54,10 @@ public class 贤者GCD_Dot : ISlotResolver
         if (Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosis, 4000) ||
             Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosisIi, 4000) ||
             Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosisIii, 4000))
+            return -1;
+
+        //如果快死了，不上dot，阈值由玩家自行设定
+        if (Core.Me.GetCurrTarget().CurrentHealthPercent < 贤者设置.实例.不上dot阈值)
             return -1;
         
         return 0;
