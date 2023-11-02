@@ -80,6 +80,8 @@ public class 贤者基础条目 : IRotationEntry
         jobViewWindow.AddQt("自动心关", true);
         jobViewWindow.AddQt("拉人", true);
         jobViewWindow.AddQt("群盾", true);
+        jobViewWindow.AddQt("减伤", true);
+        jobViewWindow.AddQt("群奶", true);
 
         //jobViewWindow.AddQt("失衡走位", false);
 

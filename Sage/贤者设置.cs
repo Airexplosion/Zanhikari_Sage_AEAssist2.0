@@ -31,17 +31,14 @@ public class 贤者设置
     }
     //这里是默认的阈值
     public float 自生阈值 = 0.7f;
-    public float 寄生阈值 = 0.5f;
+    public float 寄生阈值 = 0.65f;
     public float 单海马阈值 = 0.6f;
-    public float 白牛阈值 = 0.3f;
-    public float 灵橡阈值 = 0.2f;
-    public float 贤炮阈值 = 0.4f;
+    public float 白牛阈值 = 0.5f;
+    public float 灵橡阈值 = 0.4f;
+    public float 贤炮阈值 = 0.65f;
 
     public int 群奶数目 = 2;
-
-
-    public int time = 1500;
-    public int stack = 3;
+    
     public JobViewSave 职业视图保存 = new(){MainColor = new Vector4(40 / 255f, 173 / 255f, 70 / 255f, 0.8f)};
     public Dictionary<string, object> StyleSetting = new();
     public void 保存()

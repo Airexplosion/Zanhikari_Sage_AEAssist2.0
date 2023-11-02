@@ -21,17 +21,18 @@
       <OutputPath>..\Output\Zanhikari\</OutputPath>
     </PropertyGroup>
 
+
     <ItemGroup>
       <Reference Include="CombatRoutine">
-        <HintPath>D:\ae2.0\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
+        <HintPath>..\ae2.0\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
         <Private>False</Private>
       </Reference>
       <Reference Include="Common">
-        <HintPath>D:\ae2.0\AEAssistCNVersion\AEAssist\Common.dll</HintPath>
+        <HintPath>..\ae2.0\AEAssistCNVersion\AEAssist\Common.dll</HintPath>
         <Private>False</Private>
       </Reference>
       <Reference Include="ImGui.NET">
-        <HintPath>..\References\ImGui.NET.dll</HintPath>
+        <HintPath>..\ae2.0\AEAssistCNVersion\AEAssist\ImGui.NET.dll</HintPath>
         <Private>False</Private>
       </Reference>
     </ItemGroup>

@@ -33,6 +33,13 @@ public class 贤者GCD_箭毒 : ISlotResolver
             //还有层数就打
             if (Core.Get<IMemApiSage>().Addersting() >= 1)
                 return 1;
+        //在移动就打
+        if (Core.Get<IMemApiMove>().IsMoving())
+            if (Core.Get<IMemApiSage>().Addersting()>= 1)
+            {
+                return 3;
+            }
+
 
         //一般不打
         return -1;

@@ -30,11 +30,10 @@ public class 贤者能力技_自动减伤 : ISlotResolver
 
         if (!Core.Me.GetCurrTarget().IsNull() && Core.Me.GetCurrTarget().IsCasting)
         {
-            if (Core.Me.GetCurrTarget().CastingSpellId.GetSpell().IsBossAoe())
+            if (Core.Me.GetCurrTarget().TotalCastTime - Core.Me.GetCurrTarget().CurrentCastTime < 10.0)
             {
-                if (Core.Me.GetCurrTarget().TotalCastTime - Core.Me.GetCurrTarget().CurrentCastTime < 10.0)
+                if (Core.Me.GetCurrTarget().CastingSpellId.GetSpell().IsBossAoe())
                 {
-                    LogHelper.Print($"AOE判断过");
                     return 2;
                 }
             }
@@ -57,11 +56,11 @@ public class 贤者能力技_自动减伤 : ISlotResolver
             //如果身上有海马/整体论的buff，就不放了
             if (Core.Me.HasAura(2613) || Core.Me.HasAura(3003))
             {
-                LogHelper.Print($"罩子没过");
+
                 return SpellsDefine.Kardia.GetSpell();
                 
             }
-            LogHelper.Print($"罩子通过");
+
             return SpellsDefine.Kerachole.GetSpell();
         }
         //罩子没好放群海马
@@ -70,10 +69,10 @@ public class 贤者能力技_自动减伤 : ISlotResolver
             //如果身上有罩子/整体论的buff，就不放了
             if (Core.Me.HasAura(3003) || Core.Me.HasAura(2938))
             {
-                LogHelper.Print($"海马没过");
+
                 return SpellsDefine.Kardia.GetSpell();
             }
-            LogHelper.Print($"海马过");
+
             return SpellsDefine.Panhaima.GetSpell();
         }
         //群海马没好放整体论
@@ -82,10 +81,10 @@ public class 贤者能力技_自动减伤 : ISlotResolver
             //如果身上有罩子/群海马的buff，就不放了 id2938 罩子 2613群海马 3003整体论
             if (Core.Me.HasAura(2938) || Core.Me.HasAura(2613))
             {
-                LogHelper.Print($"整体论没过");
+
                 return SpellsDefine.Kardia.GetSpell();
             }
-            LogHelper.Print($"整体论过");
+
             return SpellsDefine.Holos.GetSpell();
             
         }

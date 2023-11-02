@@ -56,10 +56,22 @@ public class 贤者能力技_自动单奶 : ISlotResolver
 
 
 
-        if (海马目标血量.IsValid||
-            白牛目标血量.IsValid||
-            灵橡目标血量.IsValid)
+        if (海马目标血量.IsValid)
+        {
+            return 5;
+        
+        }
+
+        if (白牛目标血量.IsValid)
+        {
+            return 3;
+        }
+
+        if (灵橡目标血量.IsValid)
+        {
             return 2;
+        }
+
         //常关 只有上面那个过了才会奶
         return -1;
     }
@@ -93,13 +105,35 @@ public class 贤者能力技_自动单奶 : ISlotResolver
     }
 
     Spell Getspell()
-    {   //设定一下血量阈值的变量 小队列表.不知道是啥.排序.生命值百分比
-        var 小队最低角色血量 = PartyHelper.CastableParty.FirstOrDefault().CurrentHealthPercent;
+    {   //设定一下几个目标
+        List<uint> 排除buff = new List<uint>
+        {
+            3255,//排除出死入生
+            AurasDefine.Holmgang,//排除死斗
+            AurasDefine.Superbolide//排除超火流星
+        };
+        
+        var 海马目标 = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= 贤者设置.实例.单海马阈值 && r.IsTank() &&
+                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(排除buff, 3000))
+            .OrderBy(r => r.CurrentHealthPercent)
+            .FirstOrDefault();
+        var 白牛目标 = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= 贤者设置.实例.白牛阈值 &&
+                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(排除buff, 3000))
+            .OrderBy(r => r.CurrentHealthPercent)
+            .FirstOrDefault();
+
+        var 灵橡目标 = PartyHelper.CastableAlliesWithin30
+            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= 贤者设置.实例.灵橡阈值 &&
+                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(排除buff, 3000))
+            .OrderBy(r => r.CurrentHealthPercent)
+            .FirstOrDefault();
 
         //如果单海马冷却好了
         if (SpellsDefine.Haima.IsReady())
-        {   //看看血量最低那人是不是特低
-            if (小队最低角色血量 <= 贤者设置.实例.单海马阈值)
+        {   //看看存在不
+            if (海马目标.IsValid)
             {   //是的话就把海马加进去了
                     return SpellsDefine.Haima.GetSpell();
             }
@@ -107,7 +141,7 @@ public class 贤者能力技_自动单奶 : ISlotResolver
         //如果海马冷却没好，就看看这个白牛好没好 顺便检查一下豆子够不
         if (SpellsDefine.Taurochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
         {   //看看血量最低那人是不是特低
-            if (小队最低角色血量 <= 贤者设置.实例.白牛阈值)
+            if (白牛目标.IsValid)
             {   //是的话就把白牛加进去了
                 return SpellsDefine.Taurochole.GetSpell();
             }
@@ -116,7 +150,7 @@ public class 贤者能力技_自动单奶 : ISlotResolver
 
         if (SpellsDefine.Druochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
         {   //看看血量最低那人是不是特低
-            if (小队最低角色血量 <= 贤者设置.实例.灵橡阈值)
+            if (灵橡目标.IsValid)
             {   //是的话就把灵橡加进去了
                 return SpellsDefine.Druochole.GetSpell();
             }

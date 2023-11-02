@@ -22,11 +22,13 @@ public class 贤者GCD_群盾 : ISlotResolver
         //自己身上有群盾不刷
         if (Core.Me.HasAura(2609) || Core.Me.HasAura(2866)) return -6;
         //不是boss aoe不刷 判断一下目标是不是在读条 且是boss，并且读条不会读时间太长，比群盾时间还长
+        //判断现在读条的是不是AOE 是的话就准备放技能
+
         if (!Core.Me.GetCurrTarget().IsNull() && Core.Me.GetCurrTarget().IsCasting)
         {
-            if (Core.Me.GetCurrTarget().CastingSpellId.GetSpell().IsBossAoe())
+            if (Core.Me.GetCurrTarget().TotalCastTime - Core.Me.GetCurrTarget().CurrentCastTime < 10.0)
             {
-                if (Core.Me.GetCurrTarget().TotalCastTime - Core.Me.GetCurrTarget().CurrentCastTime < 20.0)
+                if (Core.Me.GetCurrTarget().CastingSpellId.GetSpell().IsBossAoe())
                 {
                     return 2;
                 }
