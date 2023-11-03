@@ -66,7 +66,7 @@ public class 贤者面板设置 : ISettingUI
         {
             贤者设置.实例.保存();
         }
-
+        ImGui.Text("这个滑块是用来设置血量低于多少时不给目标上dot的。");
         if (ImGui.SliderFloat("不上dot阈值", ref 贤者设置.实例.不上dot阈值, 0.0f, 1.0f))
         {
             贤者设置.实例.保存();
@@ -104,7 +104,7 @@ public class 贤者面板设置 : ISettingUI
         }
 
         ImGui.Text("点击此按钮设置为输出奶阈值设置");
-        if (ImGui.Button("输出设置"))
+        if (ImGui.Button("输出奶设置"))
         {
             贤者设置.实例.自生阈值 = 0.60f;
             贤者设置.实例.寄生阈值 = 0.55f;
