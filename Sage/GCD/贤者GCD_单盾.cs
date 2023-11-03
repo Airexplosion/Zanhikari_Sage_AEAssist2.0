@@ -18,6 +18,8 @@ public class 贤者GCD_单盾 : ISlotResolver
         {
             return -100;
         }
+        //吃死刑的目标没单盾再给，有就不给了
+        if (Core.Me.GetCurrTargetsTarget().HasAura(2607)) return -7;
 
         if (!Qt.GetQt("单盾"))
         {
