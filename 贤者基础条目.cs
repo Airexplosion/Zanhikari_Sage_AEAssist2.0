@@ -45,6 +45,7 @@ public class 贤者基础条目 : IRotationEntry
         new 贤者GCD_箭毒(),
         new 贤者GCD_贤炮(),
         new 贤者GCD_群盾(),
+        new 贤者GCD_单盾(),
         new 贤者GCD_预后(),
         new 贤者GCD_诊断(),
         new 贤者GCD_基础()
@@ -83,10 +84,11 @@ public class 贤者基础条目 : IRotationEntry
         jobViewWindow.AddQt("保留1红豆", false);
         jobViewWindow.AddQt("自动心关", true);
         jobViewWindow.AddQt("拉人", true);
-        jobViewWindow.AddQt("群盾", true);
+        jobViewWindow.AddQt("群盾", false);
         jobViewWindow.AddQt("减伤", true);
         jobViewWindow.AddQt("群奶", true);
         jobViewWindow.AddQt("自动康复", true);
+        jobViewWindow.AddQt("单盾", false);
 
         //jobViewWindow.AddQt("失衡走位", false);
 

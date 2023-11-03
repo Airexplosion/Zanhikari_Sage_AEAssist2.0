@@ -55,7 +55,7 @@ public class 贤者GCD_预后 : ISlotResolver
     {   //如果在移动
         if (Core.Get<IMemApiMove>().IsMoving())
         {   //但身上没群盾
-            if (!Core.Me.HasAura(2609))
+            if (!Core.Me.HasAura(2609)&&!Qt.GetQt("群盾")&& !(Core.Me.ClassLevel < 30))
             {   //检测一下是否有均衡，没有加一个
                 if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
                 //刷群盾
@@ -65,7 +65,7 @@ public class 贤者GCD_预后 : ISlotResolver
         //如果没在移动
         if (!Core.Get<IMemApiMove>().IsMoving())
         {
-            if (Core.Me.HasAura(2609))//如果有群盾身上
+            if (Core.Me.HasAura(2609) && !Qt.GetQt("群盾"))//如果有群盾身上
             {//那就直接刷预后
                 slot.Add(SpellsDefine.Prognosis.GetSpell());
             }

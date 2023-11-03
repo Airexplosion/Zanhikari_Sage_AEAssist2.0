@@ -76,7 +76,7 @@ public class 贤者GCD_诊断 : ISlotResolver
         //如果在移动
         if (Core.Get<IMemApiMove>().IsMoving())
         {   //但目标身上没盾
-            if (!单奶目标.HasAura(2607))
+            if (!单奶目标.HasAura(2607)&&!Qt.GetQt("单盾") && !(Core.Me.ClassLevel < 30))
             {   //检测一下是否有均衡，没有加一个
                 if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
                 //刷单盾
@@ -90,7 +90,11 @@ public class 贤者GCD_诊断 : ISlotResolver
                 slot.Add(new Spell(SpellsDefine.Diagnosis, 单奶目标));
             }
             else
-            {//没有群盾刷个群盾先
+            {//没有单盾刷个盾先
+                if (!Qt.GetQt("单盾") && !(Core.Me.ClassLevel < 30))
+                {
+                    slot.Add(new Spell(SpellsDefine.Diagnosis, 单奶目标));
+                }
                 if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
                 slot.Add(new Spell(SpellsDefine.EukrasianDiagnosis, 单奶目标));
             }

@@ -12,7 +12,8 @@ public class 贤者GCD_群盾 : ISlotResolver
 
     public int Check()
     {
-
+        //等级低于30直接别用了，均衡没学会呢
+        if (Core.Me.ClassLevel < 30) return -3;
         //群盾QT没开不刷
         if (!Qt.GetQt("群盾")) return -7;
         //拉人QT没开不刷

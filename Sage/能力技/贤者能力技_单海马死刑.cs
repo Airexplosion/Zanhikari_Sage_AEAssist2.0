@@ -21,7 +21,10 @@ public class 贤者能力技_单海马死刑 : ISlotResolver
         if (!SpellsDefine.Haima.IsReady())return -3 ;
 
         //检查要吃死刑了准备给
-        if (DeathSentenceHelper.IsDeathSentence(Core.Me.GetCurrTarget())) return 1;
+        if (TargetHelper.TargercastingIsDeathSentence(Core.Me.GetCurrTarget(), 10))
+        {
+            return 2;
+        }
         //检查是否有满足条件的目标
         CharacterAgent 单海马目标;
         单海马目标 = PartyHelper.CastableAlliesWithin30.FirstOrDefault(r =>
