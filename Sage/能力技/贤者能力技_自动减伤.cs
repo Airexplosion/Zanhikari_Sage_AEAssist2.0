@@ -28,16 +28,9 @@ public class 贤者能力技_自动减伤 : ISlotResolver
         }
         //判断现在读条的是不是AOE 是的话就准备放技能
 
-        if (!Core.Me.GetCurrTarget().IsNull() && Core.Me.GetCurrTarget().IsCasting)
+        if (TargetHelper.TargercastingIsbossaoe(Core.Me.GetCurrTarget(),10))
         {
-            if (Core.Me.GetCurrTarget().TotalCastTime - Core.Me.GetCurrTarget().CurrentCastTime < 10.0)
-            {
-                if (Core.Me.GetCurrTarget().CastingSpellId.GetSpell().IsBossAoe())
-                {
-                    return 2;
-                }
-            }
-                    
+            return 2;         
         }
 
         //只在需要减伤的地方开，因为白牛和这个减伤互斥，所以不需要一直开着

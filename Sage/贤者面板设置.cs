@@ -22,16 +22,52 @@ public class 贤者面板设置 : ISettingUI
         // ImGui.Checkbox("治疗详细设置", ref 设置);
         // if (设置)
         // {
-            ImGuiHelper.LeftInputInt("群奶数目", ref 贤者设置.实例.群奶数目);
-            ImGuiHelper.LeftInputFloat("自生阈值", ref 贤者设置.实例.自生阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("寄生阈值", ref 贤者设置.实例.寄生阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("单海马阈值", ref 贤者设置.实例.单海马阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("白牛阈值", ref 贤者设置.实例.白牛阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("灵橡阈值", ref 贤者设置.实例.灵橡阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("贤炮阈值", ref 贤者设置.实例.贤炮阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("GCD群奶阈值", ref 贤者设置.实例.GCD群奶阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("GCD单奶阈值", ref 贤者设置.实例.GCD单奶阈值, 0.01f);
-            ImGuiHelper.LeftInputFloat("不上dot阈值", ref 贤者设置.实例.不上dot阈值, 0.01f);
+        ImGuiHelper.LeftInputInt("群奶数目", ref 贤者设置.实例.群奶数目);
+
+        if (ImGui.SliderFloat("自生阈值", ref 贤者设置.实例.自生阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("寄生阈值", ref 贤者设置.实例.寄生阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("单海马阈值", ref 贤者设置.实例.单海马阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("白牛阈值", ref 贤者设置.实例.白牛阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("灵橡阈值", ref 贤者设置.实例.灵橡阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("贤炮阈值", ref 贤者设置.实例.贤炮阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("GCD群奶阈值", ref 贤者设置.实例.GCD群奶阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("GCD单奶阈值", ref 贤者设置.实例.GCD单奶阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
+
+        if (ImGui.SliderFloat("不上dot阈值", ref 贤者设置.实例.不上dot阈值, 0.0f, 1.0f))
+        {
+            贤者设置.实例.保存();
+        }
 
         // }
 
