@@ -17,6 +17,7 @@ public class 贤者面板设置 : ISettingUI
         ImGuiHelper.LeftInputInt(Language.Instance.InputStrongGcdCheckTime,
             ref MCHSettings.Instance.StrongGCDCheckTime, 1000, 10000, 1000);*/
         ImGui.Text("此ACR最好只用来打日随，你要是想用这玩意打高难，那算你牛逼");
+        ImGui.Text("按住Ctrl左键单击滑块可以直接输入数字");
 
 
         // ImGui.Checkbox("治疗详细设置", ref 设置);
@@ -37,7 +38,7 @@ public class 贤者面板设置 : ISettingUI
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("单海马阈值", ref 贤者设置.实例.单海马阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("输血阈值", ref 贤者设置.实例.单海马阈值, 0.0f, 1.0f))
         {
             贤者设置.实例.保存();
         }
@@ -79,8 +80,8 @@ public class 贤者面板设置 : ISettingUI
             贤者设置.实例.自生阈值 = 0.70f;
             贤者设置.实例.寄生阈值 = 0.65f;
             贤者设置.实例.单海马阈值 = 0.75f;
-            贤者设置.实例.白牛阈值 = 0.55f;
-            贤者设置.实例.灵橡阈值 = 0.6f;
+            贤者设置.实例.白牛阈值 = 0.5f;
+            贤者设置.实例.灵橡阈值 = 0.45f;
             贤者设置.实例.贤炮阈值 = 0.65f;
             贤者设置.实例.GCD群奶阈值 = 0.50f;
             贤者设置.实例.GCD单奶阈值 = 0.40f;
