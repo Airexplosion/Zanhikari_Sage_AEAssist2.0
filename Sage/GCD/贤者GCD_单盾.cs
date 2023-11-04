@@ -26,6 +26,11 @@ public class 贤者GCD_单盾 : ISlotResolver
             return -102;
         }
 
+        if (!Qt.GetQt("单奶"))
+        {
+            return -104;
+        }
+
         //检查要吃死刑了准备给
         if (TargetHelper.TargercastingIsDeathSentence(Core.Me.GetCurrTarget(), 10))
         {

@@ -16,6 +16,11 @@ public class 贤者能力技_自动单奶 : ISlotResolver
             return -100;
         }
 
+        if (!Qt.GetQt("单奶"))
+        {
+            return -104;
+        }
+
         //getspell是Kardia也过 说明都进冷却了
         if (Getspell() == SpellsDefine.Kardia.GetSpell())
         {
@@ -134,17 +139,17 @@ public class 贤者能力技_自动单奶 : ISlotResolver
                     return SpellsDefine.Haima.GetSpell();
             }
         }
-        //如果海马冷却没好，就看看这个白牛好没好 顺便检查一下豆子够不
-        if (SpellsDefine.Taurochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
+        //如果海马冷却没好，就看看这个白牛好没好 顺便检查一下豆子够不 并且防止单奶连按
+        if (SpellsDefine.Taurochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>1 && !SpellsDefine.Druochole.RecentlyUsed(2000))
         {   //看看血量最低那人是不是特低
             if (白牛目标.IsValid)
             {   //是的话就把白牛加进去了
                 return SpellsDefine.Taurochole.GetSpell();
             }
         }
-        //如果海马 白牛 冷却没好，就看看这个灵橡好没好 顺便检查一下豆子够不
+        //如果海马 白牛 冷却没好，就看看这个灵橡好没好 顺便检查一下豆子够不 并且防止单奶连按
 
-        if (SpellsDefine.Druochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
+        if (SpellsDefine.Druochole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>1 && !SpellsDefine.Druochole.RecentlyUsed(2000) && !SpellsDefine.Taurochole.RecentlyUsed(2000))
         {   //看看血量最低那人是不是特低
             if (灵橡目标.IsValid)
             {   //是的话就把灵橡加进去了

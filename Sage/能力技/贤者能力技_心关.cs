@@ -12,6 +12,11 @@ public class 贤者能力技_心关 : ISlotResolver
     public int Check()
     {   //自动心关关了跳过
         if (!Qt.GetQt("自动心关")) return -2;
+        //单奶关了跳过
+        if (!Qt.GetQt("单奶"))
+        {
+            return -104;
+        }
         //心关在冷却 跳过
         if (!SpellsDefine.Kardia.IsReady())
             return -1;

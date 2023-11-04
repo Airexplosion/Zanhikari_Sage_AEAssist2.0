@@ -7,7 +7,7 @@ using Common.Language;
 using 残光.贤者;
 using 残光.贤者.GCD;
 using 残光.贤者.能力技;
-using 残光.贤者.时间轴;
+
 
 namespace 残光;
 
@@ -33,7 +33,8 @@ public class 贤者基础条目 : IRotationEntry
         new 贤者GCD_复活(),
         new 贤者GCD_康复(),
         new 贤者能力技_自动减伤(),
-        new 贤者能力技_自动群奶(),
+        new 贤者能力技_自生(),
+        new 贤者能力技_寄生(),
         new 贤者能力技_单海马死刑(),
         new 贤者能力技_自动单奶(),
 
@@ -73,10 +74,10 @@ public class 贤者基础条目 : IRotationEntry
     {
         jobViewWindow = new JobViewWindow(贤者设置.实例.职业视图保存, 贤者设置.实例.保存, OverlayTitle);
         职业视图窗口 = jobViewWindow; // 这里设置一个静态变量.方便其他地方用
+        jobViewWindow.AddTab("日志", _lazyOverlay.更新日志);
         jobViewWindow.AddTab("通用", _lazyOverlay.DrawGeneral);
-        jobViewWindow.AddTab("时间轴", _lazyOverlay.DrawTimeLine);
         jobViewWindow.AddTab("DEV", _lazyOverlay.DrawDev);
-        jobViewWindow.AddTab("轮盘赌", _lazyOverlay.自毁);
+        jobViewWindow.AddTab("轮盘", _lazyOverlay.自毁);
         jobViewWindow.AddQt("奶人", true);
         jobViewWindow.AddQt("AOE", true);
         jobViewWindow.AddQt("DOT", true);
@@ -88,8 +89,10 @@ public class 贤者基础条目 : IRotationEntry
         jobViewWindow.AddQt("群盾", false);
         jobViewWindow.AddQt("减伤", true);
         jobViewWindow.AddQt("群奶", true);
+        jobViewWindow.AddQt("单奶", true);
         jobViewWindow.AddQt("自动康复", true);
         jobViewWindow.AddQt("单盾", false);
+        jobViewWindow.AddQt("这个是为了好看加的", false);
 
         //jobViewWindow.AddQt("失衡走位", false);
 

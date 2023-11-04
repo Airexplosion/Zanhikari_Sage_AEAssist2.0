@@ -25,18 +25,13 @@ public class 贤者GCD_Dot : ISlotResolver
 
 
 
-        //不是boss不上毒了
-        if (!Core.Me.GetCurrTarget().IsBoss())
-        {
-            //如果在移动，可以小上一下
-            if (Core.Get<IMemApiMove>().IsMoving())
-            {
+        //如果在移动，判断一下周围目标数目 决定是不是要小上一下
 
-                return 8;
-            }
-            //TargetHelper.IsBoss(Core.Me.GetCurrTarget());
-            //不在移动不许上
-                return -8;
+        var 周围目标 = TargetHelper.GetNearbyEnemyCount(Core.Me, 5, 5);
+        if (周围目标 >= 3)//大于等于三的情况下不上
+        {
+            //
+            return -6;
         }
 
         //如果身上有爆发药，可以提前续一下dot
@@ -50,7 +45,7 @@ public class 贤者GCD_Dot : ISlotResolver
             }
             return 2;
         }
-        //如果没有均衡，那就判断一下是不是大于4s，大于不上dot
+        //如果没有爆发药，那就判断一下是不是大于4s，大于不上dot
         if (Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosis, 4000) ||
             Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosisIi, 4000) ||
             Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosisIii, 4000))

@@ -85,6 +85,10 @@ public class 贤者面板设置 : ISettingUI
             贤者设置.实例.GCD群奶阈值 = 0.50f;
             贤者设置.实例.GCD单奶阈值 = 0.40f;
             贤者设置.实例.群奶数目 = 2;
+            Qt.NewDefault("群盾", false);
+            Qt.SetQt("群盾", false);
+            Qt.NewDefault("单盾", false);
+            Qt.SetQt("单盾", false);
             贤者设置.实例.保存();
         }
 
@@ -100,6 +104,10 @@ public class 贤者面板设置 : ISettingUI
             贤者设置.实例.GCD群奶阈值 = 0.6f;
             贤者设置.实例.GCD单奶阈值 = 0.55f;
             贤者设置.实例.群奶数目 = 2;
+            Qt.NewDefault("群盾", true);
+            Qt.SetQt("群盾", true);
+            Qt.NewDefault("单盾", true);
+            Qt.SetQt("单盾", true);
             贤者设置.实例.保存();
         }
 
@@ -115,6 +123,10 @@ public class 贤者面板设置 : ISettingUI
             贤者设置.实例.GCD群奶阈值 = 0.2f;
             贤者设置.实例.GCD单奶阈值 = 0.1f;
             贤者设置.实例.群奶数目 = 3;
+            Qt.NewDefault("群盾", false);
+            Qt.SetQt("群盾", false);
+            Qt.NewDefault("单盾", false);
+            Qt.SetQt("单盾", false);
             贤者设置.实例.保存();
         }
 

@@ -43,8 +43,8 @@ public class 贤者能力技_自动减伤 : ISlotResolver
     }
 
     Spell Getspell()
-    {   //如果罩子好了豆子有 放罩子
-        if (SpellsDefine.Kerachole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1)
+    {   //如果罩子好了豆子有 放罩子 防止连按
+        if (SpellsDefine.Kerachole.IsReady()&& Core.Get<IMemApiSage>().Addersgall()>=1 && !SpellsDefine.Panhaima.RecentlyUsed() && !SpellsDefine.Holos.RecentlyUsed())
         {
             //如果身上有海马/整体论的buff，就不放了
             if (Core.Me.HasAura(2613) || Core.Me.HasAura(3003))
@@ -57,7 +57,7 @@ public class 贤者能力技_自动减伤 : ISlotResolver
             return SpellsDefine.Kerachole.GetSpell();
         }
         //罩子没好放群海马
-        if (SpellsDefine.Panhaima.IsReady())
+        if (SpellsDefine.Panhaima.IsReady() && !SpellsDefine.Kerachole.RecentlyUsed() && !SpellsDefine.Holos.RecentlyUsed())
         {
             //如果身上有罩子/整体论的buff，就不放了
             if (Core.Me.HasAura(3003) || Core.Me.HasAura(2938))
@@ -69,7 +69,7 @@ public class 贤者能力技_自动减伤 : ISlotResolver
             return SpellsDefine.Panhaima.GetSpell();
         }
         //群海马没好放整体论
-        if (SpellsDefine.Holos.IsReady())
+        if (SpellsDefine.Holos.IsReady() && !SpellsDefine.Kerachole.RecentlyUsed() && !SpellsDefine.Panhaima.RecentlyUsed())
         {
             //如果身上有罩子/群海马的buff，就不放了 id2938 罩子 2613群海马 3003整体论
             if (Core.Me.HasAura(2938) || Core.Me.HasAura(2613))

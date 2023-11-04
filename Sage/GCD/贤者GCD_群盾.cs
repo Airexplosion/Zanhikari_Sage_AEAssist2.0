@@ -43,6 +43,7 @@ public class 贤者GCD_群盾 : ISlotResolver
     {
 
         //如果身上没有均衡，就塞个均衡进去
+        if(SpellsDefine.Zoe.IsReady()) slot.Add(SpellsDefine.Zoe.GetSpell());
         if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
         slot.Add(SpellsDefine.EukrasianPrognosis.GetSpell());
     }

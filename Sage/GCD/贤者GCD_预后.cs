@@ -55,25 +55,25 @@ public class 贤者GCD_预后 : ISlotResolver
     {   //如果在移动
         if (Core.Get<IMemApiMove>().IsMoving())
         {   //但身上没群盾
-            if (!Core.Me.HasAura(2609)&&!Qt.GetQt("群盾")&& !(Core.Me.ClassLevel < 30))
+            if (!Core.Me.HasAura(2609)&& Qt.GetQt("群盾")&&!(Core.Me.ClassLevel < 30))
             {   //检测一下是否有均衡，没有加一个
+                if (SpellsDefine.Zoe.IsReady()) slot.Add(SpellsDefine.Zoe.GetSpell());
                 if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
                 //刷群盾
                 slot.Add(SpellsDefine.EukrasianPrognosis.GetSpell());
             }
         }
         //如果没在移动
-        if (!Core.Get<IMemApiMove>().IsMoving())
+        else
         {
-            if (Core.Me.HasAura(2609) && !Qt.GetQt("群盾") && !(Core.Me.ClassLevel < 30))//如果有群盾身上
-            {//那就直接刷预后
-                slot.Add(SpellsDefine.Prognosis.GetSpell());
-            }
-            else
-            {//没有群盾刷个群盾先
+            if (!Core.Me.HasAura(2609) && Qt.GetQt("群盾") && !(Core.Me.ClassLevel < 30))
+            {   //检测一下是否有均衡，没有加一个
+                if (SpellsDefine.Zoe.IsReady()) slot.Add(SpellsDefine.Zoe.GetSpell());
                 if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
+                //刷群盾
                 slot.Add(SpellsDefine.EukrasianPrognosis.GetSpell());
             }
+            slot.Add(SpellsDefine.Prognosis.GetSpell());
         }
     }
 
