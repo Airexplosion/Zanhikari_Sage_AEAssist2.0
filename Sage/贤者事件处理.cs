@@ -33,6 +33,16 @@ public class 贤者事件处理 : IRotationEventHandler
         {
             return;
         }
+
+        if (!Qt.GetQt("单奶"))
+        {
+            return;
+        }
+
+        if (!Qt.GetQt("单盾"))
+        {
+            return;
+        }
         if (Core.Me.ClassLevel < 30) return;
         //获取可以施放技能的坦克队友中第一个没有你的单盾的对象 id2607的buff是均衡诊断
         if (!PartyHelper.CastableTanks.FirstOrDefault(agent => !agent.HasMyAura(2607)).IsNull())

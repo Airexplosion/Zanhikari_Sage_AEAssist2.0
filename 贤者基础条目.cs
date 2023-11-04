@@ -109,7 +109,6 @@ public class 贤者基础条目 : IRotationEntry
         AI.Instance.BattleData.HighPrioritySlots_OffGCD.Enqueue(SpellsDefine.Pepsis.GetSpell());
     }));
 
-
         return true;
     }
 }
