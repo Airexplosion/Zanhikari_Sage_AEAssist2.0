@@ -26,6 +26,7 @@ public class 贤者基础条目 : IRotationEntry
     public string AuthorName { get; } = "Zanhikari";
     public Jobs TargetJob { get; } = Jobs.Sage;
 
+    public AcrType AcrType { get; } = AcrType.Normal;
 
     public List<ISlotResolver> SlotResolvers = new()
     {
