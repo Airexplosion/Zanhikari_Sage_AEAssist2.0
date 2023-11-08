@@ -28,42 +28,42 @@ public class 贤者面板设置 : ISettingUI
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("自生阈值", ref 贤者设置.实例.自生阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("自生阈值", ref 贤者设置.实例.自生阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("寄生阈值", ref 贤者设置.实例.寄生阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("寄生阈值", ref 贤者设置.实例.寄生阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("输血阈值", ref 贤者设置.实例.单海马阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("输血阈值", ref 贤者设置.实例.单海马阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("白牛阈值", ref 贤者设置.实例.白牛阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("白牛阈值", ref 贤者设置.实例.白牛阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("灵橡阈值", ref 贤者设置.实例.灵橡阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("灵橡阈值", ref 贤者设置.实例.灵橡阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("贤炮阈值", ref 贤者设置.实例.贤炮阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("贤炮阈值", ref 贤者设置.实例.贤炮阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("GCD群奶阈值", ref 贤者设置.实例.GCD群奶阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("GCD群奶阈值", ref 贤者设置.实例.GCD群奶阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }
 
-        if (ImGui.SliderFloat("GCD单奶阈值", ref 贤者设置.实例.GCD单奶阈值, 0.0f, 1.0f))
+        if (ImGui.SliderFloat("GCD单奶阈值", ref 贤者设置.实例.GCD单奶阈值, 0.0f, 0.99f))
         {
             贤者设置.实例.保存();
         }

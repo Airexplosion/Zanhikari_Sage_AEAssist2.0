@@ -13,7 +13,7 @@ public class 贤者GCD_康复 : ISlotResolver
         //康复QT没开不康复
         if (!Qt.GetQt("自动康复")) return -2;
         //在移动不康复
-        if (Core.Get<IMemApiMove>().IsMoving() || !Core.Me.HasAura(AurasDefine.Swiftcast)) return -3;
+        if (Core.Get<IMemApiMove>().IsMoving() && !Core.Me.HasAura(AurasDefine.Swiftcast)) return -3;
         //有人身上有可以解除的buff了，准备康复
         if (PartyHelper.CastableAlliesWithin30.Any(agent => agent.HasCanDispel())) return 1;
         return -1;

@@ -27,13 +27,25 @@ public class 贤者GCD_Dot : ISlotResolver
 
         //如果在移动，判断一下周围目标数目 决定是不是要小上一下
 
-        var 周围目标 = TargetHelper.GetNearbyEnemyCount(Core.Me, 5, 5);
-        if (周围目标 >= 3)//大于等于三的情况下不上
-        {
-            //
-            return -6;
+        var 周围目标 = TargetHelper.GetNearbyEnemyCount(Core.Me, 10, 10);
+        if (!Core.Get<IMemApiTarget>().IsBoss(Core.Me.GetCurrTarget()))
+        {   //在移动 并且周围确实有小怪，在跟着跑，且GCD到0了，允许上毒
+            if (Core.Get<IMemApiMove>().IsMoving() && 周围目标 >= 3 && AI.Instance.GetGCDDuration() == 0)
+            {
+                if (Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosis, 4000) ||
+                    Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosisIi, 4000) ||
+                    Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.EukrasianDosisIii, 4000))
+                { 
+                    return -1; 
+                }
+                else
+                {
+                    return 5;
+                }
+                
+            }
+            return -5;
         }
-
         //如果身上有爆发药，可以提前续一下dot
         if (Core.Me.HasAura(AurasDefine.Medicated))
         {
