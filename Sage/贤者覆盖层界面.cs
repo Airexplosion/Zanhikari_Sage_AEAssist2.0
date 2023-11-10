@@ -68,29 +68,29 @@ public class 贤者覆盖层界面
 
     }
 
-    public void DrawTimeLine(JobViewWindow jobViewWindow)
-    {
-        var currTriggerline = AI.Instance.TriggerlineData.CurrTriggerLine;
-        var notice = "无";
-        if (currTriggerline != null) notice = $"[{currTriggerline.Author}]{currTriggerline.Name}";
+    //public void DrawTimeLine(JobViewWindow jobViewWindow)
+    //{
+    //    var currTriggerline = AI.Instance.TriggerlineData.CurrTriggerLine;
+    //    var notice = "无";
+    //    if (currTriggerline != null) notice = $"[{currTriggerline.Author}]{currTriggerline.Name}";
 
-        ImGui.Text(notice);
-        if (currTriggerline != null)
-        {
-            ImGui.Text("导出变量:".Loc());
-            ImGui.Indent();
-            foreach (var v in currTriggerline.ExposedVars)
-            {
-                var oldValue = AI.Instance.ExposedVars.GetValueOrDefault(v);
-                ImGuiHelper.LeftInputInt(v, ref oldValue);
-                AI.Instance.ExposedVars[v] = oldValue;
-            }
+    //    ImGui.Text(notice);
+    //    if (currTriggerline != null)
+    //    {
+    //        ImGui.Text("导出变量:".Loc());
+    //        ImGui.Indent();
+    //        foreach (var v in currTriggerline.ExposedVars)
+    //        {
+    //            var oldValue = AI.Instance.ExposedVars.GetValueOrDefault(v);
+    //            ImGuiHelper.LeftInputInt(v, ref oldValue);
+    //            AI.Instance.ExposedVars[v] = oldValue;
+    //        }
 
-            ImGui.Unindent();
-        }
+    //        ImGui.Unindent();
+    //    }
         
         
-    }
+    //}
 
     public void DrawDev(JobViewWindow jobViewWindow)
     {
@@ -115,24 +115,23 @@ public class 贤者覆盖层界面
             ImGui.Text($"小队坦克数量：{PartyHelper.CastableTanks.Count}");
             ImGui.TreePop();
         }
-        
-    }
-    
-    public void 自毁(JobViewWindow jobViewWindow)
-    {
+
         if (!ImGui.TreeNode("轮盘赌"))
             return;
         if (ImGui.Button("来一枪"))
             轮盘赌();
         ImGui.TreePop();
+
+        void 轮盘赌()
+        {
+            if (new Random().Next(1, 7) == 1)
+                Core.Get<IMemApiSendMessage>().SendMessage("/xlkill");
+            else
+                LogHelper.Print("没中");
+        }
+
     }
-    private void 轮盘赌()
-    {
-        if (new Random().Next(1, 7) == 1)
-            Core.Get<IMemApiSendMessage>().SendMessage("/xlkill");
-        else
-            LogHelper.Print("没中");
-    }
+    
     
     
     

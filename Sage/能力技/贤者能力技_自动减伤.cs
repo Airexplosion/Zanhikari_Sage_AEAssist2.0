@@ -2,6 +2,7 @@ using CombatRoutine;
 using Common;
 using Common.Define;
 using Common.Helper;
+using static 残光.贤者.贤者覆盖层界面;
 
 namespace 残光.贤者.能力技;
 //这里包含 群海马 罩子 整体论的调用逻辑

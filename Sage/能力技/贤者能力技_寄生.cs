@@ -12,6 +12,7 @@ public class 贤者能力技_寄生 : ISlotResolver
 
     public int Check()
     {
+        if (Core.Me.ClassLevel < 50) return -5;
         //QT奶人关了就跳过
         if (!Qt.GetQt("群奶"))
         {

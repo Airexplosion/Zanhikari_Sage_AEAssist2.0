@@ -12,6 +12,25 @@ public class 贤者能力技_自生 : ISlotResolver
 
     public int Check()
     {
+        if (Core.Me.ClassLevel < 20) return -100;
+
+        if(Core.Me.ClassLevel>=20&& Core.Me.ClassLevel < 60)
+        {
+
+            if (!SpellsDefine.Physis.IsReady())
+            {
+                return -103;
+            }
+        }
+        else if (Core.Me.ClassLevel >= 60)
+        {
+
+            if (SpellsDefine.PhysisIi.IsReady())
+            {
+                return -103;
+            }
+        }
+
         //QT奶人关了就跳过
         if (!Qt.GetQt("群奶"))
         {
@@ -22,8 +41,7 @@ public class 贤者能力技_自生 : ISlotResolver
         {
             return -100;
         }
-        //冷却没好跳了
-        if (!SpellsDefine.PhysisIi.IsReady() || !SpellsDefine.Physis.IsReady()) return -6;
+
 
         //防止使用过奶之后连按
         if (SpellsDefine.Ixochole.RecentlyUsed(2000)|| SpellsDefine.PhysisIi.RecentlyUsed(2000)|| SpellsDefine.Physis.RecentlyUsed(2000)) return -5;

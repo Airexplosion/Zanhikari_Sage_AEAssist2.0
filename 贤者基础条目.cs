@@ -77,7 +77,6 @@ public class 贤者基础条目 : IRotationEntry
         jobViewWindow.AddTab("日志", _lazyOverlay.更新日志);
         jobViewWindow.AddTab("通用", _lazyOverlay.DrawGeneral);
         jobViewWindow.AddTab("DEV", _lazyOverlay.DrawDev);
-        jobViewWindow.AddTab("轮盘", _lazyOverlay.自毁);
         jobViewWindow.AddQt("奶人", true);
         jobViewWindow.AddQt("AOE", true);
         jobViewWindow.AddQt("DOT", true);

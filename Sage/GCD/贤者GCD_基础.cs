@@ -12,14 +12,11 @@ public class 贤者GCD_基础 : ISlotResolver
         if (Qt.GetQt("AOE"))
         {   //判断一下周围五米范围内是不是有2个以上的，有的话把失衡添加进slot
             var aoeCount = TargetHelper.GetNearbyEnemyCount(Core.Me, 5, 5);
-            if (aoeCount >= 2)
+            if (aoeCount >= 2&& !(Core.Me.ClassLevel < 46))
             //return SpellsDefine.Holy.GetSpell();//这里有个Holy是干啥的，不知道，抄了
             //这里是嵌套的获取失衡在各个等级的ID的替换
             {
-                if (!(Core.Me.ClassLevel < 46)) ;//等级没到就不打
-                {
-                    return Core.Get<IMemApiSpell>().CheckActionChange(SpellsDefine.Dyskrasia.GetSpell().Id).GetSpell();
-                }
+                return Core.Get<IMemApiSpell>().CheckActionChange(SpellsDefine.Dyskrasia.GetSpell().Id).GetSpell();
             }
         }
         ////如果在移动，且开了失衡走位，且GCD转到0了
@@ -35,6 +32,7 @@ public class 贤者GCD_基础 : ISlotResolver
 
     public int Check()
     {
+
             //如果获取到的是失衡，允许执行
         if (GetSpell() ==
             Core.Get<IMemApiSpell>().CheckActionChange(SpellsDefine.Dyskrasia.GetSpell().Id).GetSpell()) return 0;

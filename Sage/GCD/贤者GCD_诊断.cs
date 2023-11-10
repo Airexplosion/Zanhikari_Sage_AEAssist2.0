@@ -23,27 +23,24 @@ public class 贤者GCD_诊断 : ISlotResolver
             return -104;
         }
 
-        //豆子只剩1的时候准备触发这个逻辑
-        if (Core.Get<IMemApiSage>().Addersgall() < 2)
-        {   //设定一下list
-            List<uint> 排除buff = new List<uint>
+        List<uint> 排除buff = new List<uint>
             {
             3255,//排除出死入生
             AurasDefine.Holmgang,//排除死斗
             AurasDefine.Superbolide//排除超火流星
             };
-            var 单奶目标 = PartyHelper.CastableAlliesWithin30
-            .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= 贤者设置.实例.GCD单奶阈值 &&
-                        !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(排除buff, 3000))
-            .OrderBy(r => r.CurrentHealthPercent)
-            .FirstOrDefault();
-
+        var 单奶目标 = PartyHelper.CastableAlliesWithin30
+        .Where(r => r.CurrentHealth > 0 && r.CurrentHealthPercent <= 贤者设置.实例.GCD单奶阈值 &&
+                    !r.HasAura(AurasDefine.LivingDead) && !r.HasAura(AurasDefine.WalkingDead) && !r.HasAnyAura(排除buff, 3000))
+        .OrderBy(r => r.CurrentHealthPercent)
+        .FirstOrDefault();
+        //豆子只剩1的时候准备触发这个逻辑
             if (单奶目标.IsValid)
             {
                 //看看是不是在移动
                 if (Core.Get<IMemApiMove>().IsMoving())
                 {   //但身上没你的盾
-                    if (!单奶目标.HasAura(2607))
+                    if (!单奶目标.HasAura(2607)&&!(Core.Me.ClassLevel < 30))
                     {
                         return 5;
                     }
@@ -55,8 +52,6 @@ public class 贤者GCD_诊断 : ISlotResolver
                     return 9;
                 }
             }
-
-        }
 
         //常关，只有需要奶的时候才通过Check
         return -1;
@@ -81,7 +76,7 @@ public class 贤者GCD_诊断 : ISlotResolver
         //如果在移动
         if (Core.Get<IMemApiMove>().IsMoving())
         {   //但目标身上没盾
-            if (!单奶目标.HasAura(2607)&& Qt.GetQt("单盾")&& Core.Me.ClassLevel >= 30)
+            if (!单奶目标.HasAura(2607)&& Qt.GetQt("单盾")&& !(Core.Me.ClassLevel < 30))
             {   //检测一下是否有均衡，没有加一个
 
                 if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
@@ -91,7 +86,7 @@ public class 贤者GCD_诊断 : ISlotResolver
         }
         else
         {
-            if (!单奶目标.HasAura(2607) && Qt.GetQt("单盾") && Core.Me.ClassLevel >= 30)
+            if (!单奶目标.HasAura(2607) && Qt.GetQt("单盾") && !(Core.Me.ClassLevel < 30))
             {   //检测一下是否有均衡，没有加一个
 
                 if (!Core.Get<IMemApiSage>().Eukrasia()) slot.Add(SpellsDefine.Eukrasia.GetSpell());
