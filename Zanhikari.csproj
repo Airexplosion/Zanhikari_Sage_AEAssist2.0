@@ -22,6 +22,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="System.Windows.Extensions" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Reference Include="CombatRoutine">
         <HintPath>D:\ae2.0\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
         <Private>False</Private>

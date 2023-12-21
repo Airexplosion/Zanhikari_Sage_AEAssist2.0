@@ -8,6 +8,9 @@ using Common.Language;
 using ImGuiNET;
 using AEAssist.MemoryApi;
 using Common.Helper;
+//using System;
+//using System.Media;
+
 
 #endregion
 
@@ -16,8 +19,7 @@ namespace 残光.贤者;
 public class 贤者覆盖层界面
 {
     private bool isHorizontal;
-
-
+    //private bool openMusicPlayer = false;
 
     public void 更新日志(JobViewWindow jobViewWindow)
     {
@@ -94,6 +96,9 @@ public class 贤者覆盖层界面
 
     public void DrawDev(JobViewWindow jobViewWindow)
     {
+
+
+
         if (ImGui.TreeNode("循环"))
         {
             ImGui.Text($"爆发药：{Qt.GetQt("爆发药")}");
@@ -130,11 +135,72 @@ public class 贤者覆盖层界面
                 LogHelper.Print("没中");
         }
 
+
+
+
+
+        //if (ImGui.Button("打开音乐播放器"))
+        //{
+        //    // 在按钮点击事件中，设置一个标志位，表示需要打开音乐播放器界面
+        //    openMusicPlayer = true;
+        //}
+
+
+        //if (openMusicPlayer)
+        //{
+        //    DrawMusicPlayer();
+        //}
+
     }
-    
-    
-    
-    
+    //private void DrawMusicPlayer()
+    //{
+
+    //    ImGui.Begin("音乐播放器");
+
+
+    //    // 在窗口中绘制本地音乐播放器的内容
+    //    ImGui.Text("本地音乐播放器");
+    //    if (ImGui.Button("播放"))
+    //    {
+    //        // 处理播放按钮的点击事件
+    //        // 在这里可以添加播放音乐的逻辑
+    //    }
+    //    if (ImGui.Button("暂停"))
+    //    {
+    //        // 处理暂停按钮的点击事件
+    //        // 在这里可以添加暂停音乐的逻辑
+    //    }
+    //    float volume = 0.5f;
+    //    if (ImGui.SliderFloat("音量", ref volume, 0.0f, 1.0f))
+    //    {
+    //        // 处理音量滑动条的值变化事件
+    //        // 在这里可以添加调整音量的逻辑
+    //    }
+
+    //    if (ImGui.Button("关闭"))
+    //    {
+    //        openMusicPlayer = false;
+    //    }
+
+    //    // 结束ImGui窗口
+    //    ImGui.End();
+
+
+
+    //    void PlayMusic(string filePath)
+    //    {
+
+    //        // 创建一个MediaPlayer对象
+    //        SoundPlayer player = new SoundPlayer(filePath);
+
+    //        // 播放音频
+    //        player.Play();
+
+    //        // 停止播放音频
+    //        player.Stop();
+    //    }
+    //}
+
 }
 
 public static class Qt
